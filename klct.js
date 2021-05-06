@@ -318,7 +318,7 @@ async function list() {
                     let roomcount3 = result.result.cashLimit.harvests.find(item => item.index == xx[6]).count
                     $.log("last" + roomcount0)
 
-                    shouldplant3 = count3 - roomcount3
+                    shouldplant3 = count3 - roomcount3 
                     $.log(shouldplant3)
                 }
 
