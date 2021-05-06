@@ -3,71 +3,38 @@
         "name": "Magger 应用订阅",
         "author": "@magger",
         "icon": "https://s3.ax1x.com/2021/02/17/ygLAIA.jpg",
-        "repo": "https://github.com/xubo5200/bonus/edit/main",
+        "repo": "https://github.com/xubo5200/bonus/blob/master",
         "apps": [
               
-                
                 {
                         "id": "klct",
-                        "name": "朗果英语",
-                        "keys": [
-                                "klcturl",
-                                "klcthd",
-                                "klctbody",
-                                "klcturl2",
-                                "klcthd2",
-                                "klctbody2",
-                                "klcturl3",
-                                "klcthd3",
-                                "klctbody3",
-                                "klcturl4",
-                                "klcthd4",
-                                "klctbody4",
-                                "klcturl5",
-                                "klcthd5",
-                                "klctbody5",
-                                "klcturl6",
-                                "klcthd6",
-                                "klctbody6",
-                                "klcturl7",
-                                "klcthd7",
-                                "klctbody7",
-                                "klcturl8",
-                                "klcthd8",
-                                "klctbody8",
-                                "klcturl9",
-                                "klcthd9",
-                                "klctbody9",
-                                "klcturl10",
-                                "klcthd10",
-                                "klctbody10",
-                                "klcturl11",
-                                "klcthd11",
-                                "klctbody11"
-                        ],
-                        "author": "@magger",
-                        "settings": [
-                                {
-                                        "id": "klctstatus",
-                                        "name": "当前账号",
-                                        "val": "1",
-                                        "type": "number",
-                                        "desc": "当前账号对应"
-                                },
-                                {
-                                        "id": "klctcount",
-                                        "name": "账号个数",
-                                        "val": "1",
-                                        "type": "number",
-                                        "desc": "需要几个账号，数字为几"
-                                }
-                        ],
-                        "repo": "https://github.com/xubo5200/bonus/blob/main/klct.js",
-                        "icons": [
-                                "https://ae01.alicdn.com/kf/Uc3c35e1796624a7ca6a23c89c7f0dff2H.jpg",
-                                "https://ae01.alicdn.com/kf/Uc3c35e1796624a7ca6a23c89c7f0dff2H.jpg"
-                        ],
-                        "script": "https://raw.githubusercontent.com/age174/-/main/klct.js"
-                }
+                        "name": "如意化缘",
+                        "keys": ["klctheader", "klctheader2","klctheader3", "klctheader4", "klctheader5","klctheader6", "klctheader7", "klctheader8","klctheader9", "klctheader10"],
+                        "author": "@Ariszy",
+                        "settings": [{
+                                "id": "tz",
+                                "name": "静默运行",
+                                "val": "1",
+                                "type": "number",
+                                "desc": "0为不通知，1为全部通知"
+                            },
+                          {
+                            "id": "klctstatus",
+                            "name": "当前账号",
+                            "val": "1",
+                            "type": "number",
+                            "desc": "当前账号对应"
+                          },
+                          {
+                            "id": "klctcount",
+                            "name": "账号个数",
+                            "val": "1",
+                            "type": "number",
+                            "desc": "需要几个账号，数字为几"
+                          }],
+                        "repo": "https://github.com/xubo5200/bonus/blob/master/klct.js",
+                        "icons": ["https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/klct-mini.png", "https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/klct.png"],
+                        "script": "https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js"
+                      }
         ]
 }

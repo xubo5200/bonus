@@ -1,26 +1,25 @@
 /*
 软件名称:快乐餐厅 商店搜索下载
 更新时间：2021-05-06 @magger
-脚本说明：快乐餐厅刷红包和银币
+脚本说明：快乐餐厅 第一次学习脚本！！！
 
 本脚本以学习为主！
 
 boxjs地址 :  
-https://raw.githubusercontent.com/age174/-/main/feizao.box.json
+https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 快乐餐厅
 圈X配置如下，其他软件自行测试
+
 [task_local]
 #快乐餐厅(自己改五分钟一次)
-10 0-23 * * * https://raw.githubusercontent.com/age174/-/main/qlp.js, tag=快乐餐厅, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
+10 0-23 * * * https://raw.githubusercontent.com/xubo5200/bonus/master/qlp.js, tag=快乐餐厅, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
+
 [rewrite_local]
 #快乐餐厅
-https://ibestfanli.com/commerce_coin_service/api/user/coin/addCoin url script-request-header https://raw.githubusercontent.com/age174/-/main/qlp.js
-#loon
-https://ibestfanli.com/commerce_coin_service/api/user/coin/addCoin script-path=https://raw.githubusercontent.com/age174/-/main/qlp.js, requires-header=true, timeout=10, tag=快乐餐厅
-#surge
-快乐餐厅 = type=http-request,pattern=https://ibestfanli.com/commerce_coin_service/api/user/coin/addCoin,requires-header=1,max-size=0,script-path=https://raw.githubusercontent.com/age174/-/main/qlp.js,script-update-interval=0
+https://bp-api.coohua.com/bubuduo-klct/game/account url script-request-header https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js
+
 [MITM]
-hostname = ibestfanli.com
+hostname = bp-api.coohua.com
 
 
 
@@ -29,24 +28,24 @@ hostname = ibestfanli.com
 
 
 
-https://bp-api.coohua.com/bubuduo-klct/game/account url script-request-header ryhy.js
-https://bp-api.coohua.com/bubuduo-ryhy/ad/lookVideo url script-request-body ryhy.js
+https://bp-api.coohua.com/bubuduo-klct/game/account url script-request-header klct.js
+https://bp-api.coohua.com/bubuduo-klct/ad/lookVideo url script-request-body klct.js
 hostname = bp-api.coohua.com
 */
-const zhiyi = '如意花园'
-const $ = Env(zhiyi)
+const magger = '快乐餐厅'
+const $ = Env(magger)
 const notify = $.isNode() ?require('./sendNotify') : '';
 let no,No,no0,no1,no2,no3,no4,no5,no6,no7,no8;
 var roomcount,unlockno,id
 let shouldplan0,shouldplant1,shouldplant2,shouldplan3,ahouldplant4
 let status;
-status = (status = ($.getval("ryhystatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
-var ryhyheaderArr = []
-var ryhyadheaderArr = []
-var ryhyadbodyArr = []
-let ryhyheader = $.getdata('ryhyheader')
-let ryhyadheader = $.getdata('ryhyadheader')
-let ryhyadbody = $.getdata('ryhyadbody')
+status = (status = ($.getval("klctstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
+var klctheaderArr = []
+var klctadheaderArr = []
+var klctadbodyArr = []
+let klctheader = $.getdata('klctheader')
+let klctadheader = $.getdata('klctadheader')
+let klctadbody = $.getdata('klctadbody')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const invite=1;//新用户自动邀请，0关闭，1默认开启
 const logs =0;//0为关闭日志，1为开启
@@ -66,29 +65,29 @@ if (isGetCookie) {
    $.done()
 } 
 
-ryhyheaderArr.push($.getdata('ryhyheader'))
-ryhyadheaderArr.push($.getdata('ryhyadheader'))
-ryhyadbodyArr.push($.getdata('ryhyadbody'))
-    let ryhycount = ($.getval('ryhycount') || '1');
-  for (let i = 2; i <= ryhycount; i++) {
-    ryhyheaderArr.push($.getdata(`ryhyheader${i}`))
-    ryhyadheaderArr.push($.getdata(`ryhyadheader${i}`))
-    ryhyadbodyArr.push($.getdata(`ryhtadbody${i}`))
+klctheaderArr.push($.getdata('klctheader'))
+klctadheaderArr.push($.getdata('klctadheader'))
+klctadbodyArr.push($.getdata('klctadbody'))
+    let klctcount = ($.getval('klctcount') || '1');
+  for (let i = 2; i <= klctcount; i++) {
+    klctheaderArr.push($.getdata(`klctheader${i}`))
+    klctadheaderArr.push($.getdata(`klctadheader${i}`))
+    klctadbodyArr.push($.getdata(`ryhtadbody${i}`))
   }
 !(async () => {
-if (!ryhyheaderArr[0]) {
-    $.msg($.name, '【提示】请先获取如意花园一cookie')
+if (!klctheaderArr[0]) {
+    $.msg($.name, '【提示】请先获取快乐餐厅一cookie')
     return;
   }
-   console.log(`------------- 共${ryhyheaderArr.length}账号----------------\n`)
-  for (let i = 0; i < ryhyheaderArr.length; i++) {
-    if (ryhyheaderArr[i]) {
+   console.log(`------------- 共${klctheaderArr.length}账号----------------\n`)
+  for (let i = 0; i < klctheaderArr.length; i++) {
+    if (klctheaderArr[i]) {
       message = ''
-      ryhyheader = ryhyheaderArr[i];
-      ryhyadheader = ryhyadheaderArr[i];
-      ryhyadbody = ryhyadbodyArr[i];
+      klctheader = klctheaderArr[i];
+      klctadheader = klctadheaderArr[i];
+      klctadbody = klctadbodyArr[i];
       $.index = i + 1;
-      console.log(`\n开始【如意花园${$.index}】`)
+      console.log(`\n开始【快乐餐厅${$.index}】`)
       await landmsg()
       await haves()
       await room() 
@@ -105,30 +104,30 @@ if (!ryhyheaderArr[0]) {
     
 function GetCookie() {
 if($request&&$request.url.indexOf("plant")>=0) {
-   const ryhyheader = JSON.stringify($request.headers)
-    if(ryhyheader)    $.setdata(ryhyheader,`ryhyheader${status}`)
-    $.log(`[${zhiyi}] 获取ryhyheader请求: 成功,ryhyheader: ${ryhyheader}`)
-    $.msg(`ryhyheader${status}: 成功🎉`, ``)
+   const klctheader = JSON.stringify($request.headers)
+    if(klctheader)    $.setdata(klctheader,`klctheader${status}`)
+    $.log(`[${magger}] 获取klctheader请求: 成功,klctheader: ${klctheader}`)
+    $.msg(`klctheader${status}: 成功🎉`, ``)
 }
 if($request.url.indexOf("ad/lookVideo")>-1){
-   const ryhyadheader = JSON.stringify($request.headers)
-    if(ryhyadheader)
-$.setdata(ryhyadheader,`ryhyadheader${status}`)
-     $.log(`[${zhiyi}] 获取ryhyadheader请求: 成功,ryhyadheader: ${ryhyadheader}`)
-    $.msg(`ryhyadheader${status}: 成功🎉`, ``)
-   const ryhyadbody = $request.body
-   if(ryhyadbody)
-$.setdata(ryhyadbody,`ryhyadbody${status}`)
-      $.log(`[${zhiyi}] 获取ryhyadbody请求: 成功,ryhyadbody: ${ryhyadbody}`)
-    $.msg(`ryhyadbody${status}: 成功🎉`, ``)
+   const klctadheader = JSON.stringify($request.headers)
+    if(klctadheader)
+$.setdata(klctadheader,`klctadheader${status}`)
+     $.log(`[${magger}] 获取klctadheader请求: 成功,klctadheader: ${klctadheader}`)
+    $.msg(`klctadheader${status}: 成功🎉`, ``)
+   const klctadbody = $request.body
+   if(klctadbody)
+$.setdata(klctadbody,`klctadbody${status}`)
+      $.log(`[${magger}] 获取klctadbody请求: 成功,klctadbody: ${klctadbody}`)
+    $.msg(`klctadbody${status}: 成功🎉`, ``)
 }
 }
 
 async function landmsg(){
  return new Promise((resolve) => {
     let landmsg_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/message`,
-        headers: JSON.parse(ryhyheader)
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/message`,
+        headers: JSON.parse(klctheader)
    	}
    $.get(landmsg_url,async(error, response, data) =>{
     try{
@@ -156,8 +155,8 @@ $.log(unlock)
 async function unlock(){
  return new Promise((resolve) => {
     let unlock_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/unlock`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/unlock`,
+        headers: JSON.parse(klctheader),
         body:`{"landIndex":${unlockno}}`
    	}
    $.post(unlock_url,async(error, response, data) =>{
@@ -180,8 +179,8 @@ async function unlock(){
 async function room(){
  return new Promise((resolve) => {
     let room_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/order/msg`,
-        headers: JSON.parse(ryhyheader)
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/order/msg`,
+        headers: JSON.parse(klctheader)
    	}
    $.get(room_url,async(error, response, data) =>{
     try{
@@ -200,8 +199,8 @@ async function room(){
 async function submit(){
  return new Promise((resolve) => {
     let submit_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/order/reward`,
-        headers: JSON.parse(ryhyheader)
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/order/reward`,
+        headers: JSON.parse(klctheader)
    	}
    $.get(submit_url,async(error, response, data) =>{
     try{
@@ -220,8 +219,8 @@ async function submit(){
 async function list(){
  return new Promise((resolve) => {
     let list_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/order/exchange/list`,
-        headers: JSON.parse(ryhyheader)
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/order/exchange/list`,
+        headers: JSON.parse(klctheader)
    	}
    $.post(list_url,async(error, response, data) =>{
     try{
@@ -334,8 +333,8 @@ async function plant(){
 async function plant0(){
  return new Promise((resolve) => {
     let plant0_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/plant`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/plant`,
+        headers: JSON.parse(klctheader),
         body: `{"landIndex":0,"seedIndex":${no0},"way":1}`
    	}
    $.post(plant0_url,async(error, response, data) =>{
@@ -365,8 +364,8 @@ await havest()
 async function havest(){
  return new Promise((resolve) => {
     let havest_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/harvest`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/harvest`,
+        headers: JSON.parse(klctheader),
         body: `{"landIndex":${no}}`
    	}
    $.post(havest_url,async(error, response, data) =>{
@@ -388,9 +387,9 @@ async function havest(){
 async function lookVideo(){
  return new Promise((resolve) => {
     let lookVideo_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/ad/lookVideo`,
-        headers: JSON.parse(ryhyadheader),
-        body: ryhyadbody
+   		url: `https://bp-api.coohua.com/bubuduo-klct/ad/lookVideo`,
+        headers: JSON.parse(klctadheader),
+        body: klctadbody
    	}
    $.post(lookVideo_url,async(error, response, data) =>{
     try{
@@ -411,8 +410,8 @@ async function lookVideo(){
 async function cloud(){
  return new Promise((resolve) => {
     let cloud_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/cloud/used`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/cloud/used`,
+        headers: JSON.parse(klctheader),
         body: `null`
    	}
    $.post(cloud_url,async(error, response, data) =>{
@@ -434,8 +433,8 @@ async function cloud(){
 async function rewardlist(){
  return new Promise((resolve) => {
     let rewardlist_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/game/sign/reward/list`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/game/sign/reward/list`,
+        headers: JSON.parse(klctheader),
    	}
    $.post(rewardlist_url,async(error, response, data) =>{
     try{
@@ -463,8 +462,8 @@ async function rewardlist(){
 async function tasklist(){
  return new Promise((resolve) => {
     let tasklist_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/task/list`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/task/list`,
+        headers: JSON.parse(klctheader),
        
    	}
    $.get(tasklist_url,async(error, response, data) =>{
@@ -506,8 +505,8 @@ async function tasklist(){
 async function getReward(){
  return new Promise((resolve) => {
     let getReward_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/task/daily/getReward?taskId=${id}`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/task/daily/getReward?taskId=${id}`,
+        headers: JSON.parse(klctheader),
         
    	}
    $.post(getReward_url,async(error, response, data) =>{
@@ -529,8 +528,8 @@ async function getReward(){
 async function daily(){
  return new Promise((resolve) => {
     let daily_url = {
-   		url: `https://bp-api.coohua.com/bubuduo-ryhy/task/finish/daily?taskId=${id}`,
-        headers: JSON.parse(ryhyheader),
+   		url: `https://bp-api.coohua.com/bubuduo-klct/task/finish/daily?taskId=${id}`,
+        headers: JSON.parse(klctheader),
         
    	}
    $.post(daily_url,async(error, response, data) =>{
@@ -562,7 +561,7 @@ async function showmsg() {
         }
       } else {
         if ((hour == 12 && minute <= 20) || (hour == 23 && minute >= 40)) {
-          $.msg(zhiyi, '', message)
+          $.msg(magger, '', message)
         } else {
           $.log(message)
         }
