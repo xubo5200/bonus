@@ -19,14 +19,30 @@ https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 [rewrite_local]
 #快乐餐厅
 https://bp-api.coohua.com/bubuduo-klct/game/account url script-request-header https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js
-
 https://bp-api.coohua.com/bubuduo-klct/ad/lookVideo url script-request-body https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js
-
+^https://bp-api.coohua.com/bubuduo-klct/game/sign/reward/list url script-response-body https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js
 [MITM]
 hostname = bp-api.coohua.com
 
 
 */
+
+let body = $response.body;
+try {
+    $.log(body)
+    body = JSON.parse(body)
+    $.log(body)
+    body.result.cashLimit.signDays = 5
+    body.result.cashLimit.todayVideoNum = 50
+    body = JSON.stringify(body)
+} catch (e) {
+    console.log(e)
+} finally {
+    $done({ body })
+}
+
+
+
 const magger = '快乐餐厅'
 const $ = Env(magger)
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -83,12 +99,12 @@ for (let i = 2; i <= klctcount; i++) {
             klctadbody = klctadbodyArr[i];
             $.index = i + 1;
             console.log(`\n开始【快乐餐厅${$.index}】`)
-            await landmsg()
-            await haves()
-            await room()
-            await list()
-            await plant()
-            await rewardlist()
+            // await landmsg()
+            // await haves()
+            // await room()
+            // await list()
+            // await plant()
+            // await rewardlist()
             await tasklist()
         }
     }
@@ -115,6 +131,9 @@ function GetCookie() {
             $.setdata(klctadbody, `klctadbody${status}`)
         $.log(`[${magger}] 获取klctadbody请求: 成功,klctadbody: ${klctadbody}`)
         $.msg(`klctadbody${status}: 成功🎉`, ``)
+    }
+    if ($request.url.indexOf("game/sign/reward/list") > -1) {
+
     }
 }
 
@@ -437,7 +456,7 @@ async function rewardlist() {
                 if (logs) $.log(data)
                 if (result.code == 0) {
                     $.log("今日打卡进度：" + result.result.cashLimit.todayVideoNum + "/" + result.result.signVideo + "\n")
-                    $.log("总打卡进度：" + result.result.cashLimit.signDays + "\n" + "打卡5天、10天、15天、20天、30天、50天、80天、100天、120天可以兑换，请兑换\n")
+                    $.log("总打卡进度：" + result.result.cashLimit.signDays + "\n" + "打卡5天、10天、15天、20天、25天、30天、50天、90天、可以兑换，请兑换\n")
                     if (result.result.cashLimit.todayVideoNum < result.result.signVideo) {
                         await lookVideo()
                         await cloud()
@@ -457,7 +476,7 @@ async function rewardlist() {
 async function tasklist() {
     return new Promise((resolve) => {
         let tasklist_url = {
-            url: `https://bp-api.coohua.com/bubuduo-klct/task/list`,
+            url: `https://bp-api.coohua.com/bubuduo-klct/task/getHomePageTask`,
             headers: JSON.parse(klctheader),
 
         }
