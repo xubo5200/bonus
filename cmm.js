@@ -68,8 +68,10 @@ if (isGetCookie) {
     GetCookie();
     $.done()
 }
-var cmmh = `{"device":"app","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/json","User-Agent":"chanmama-ios/1.8.4","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI1MjUyNDAwLCJpYXQiOjE2MjI3MDg1NjEsImlkIjoxMzY5MDczfQ.LzPFU9wffebLToq29GoIexbx533_7vc44ojlo5MvzzE","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI1MjUyNDAwLCJpYXQiOjE2MjI3MDg1NjEsImlkIjoxMzY5MDczfQ.LzPFU9wffebLToq29GoIexbx533_7vc44ojlo5MvzzE","Host":"api-service.chanmama.com","Date":"Mon, 21 Jun 2021 10:08:15 +0800","Accept-Language":"zh-cn","Accept":"*/*","X-Client-Id":"IOS8A913483-81E5-4109-A16D-BD5027CF8B7D"}`
+`{"cmmheader":"{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:22:34 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}","cmmheader2":"{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:20:40 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}","cmmheader3":"","cmmheader4":"","cmmheader5":"","cmmheader6":"","cmmheader7":"","cmmheader8":"","cmmheader9":"","cmmheader10":""}`
+var cmmh = `{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:22:34 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}`
 cmmheaderArr.push(cmmh)
+// cmmheaderArr.push(`{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:20:40 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}`)
 cmmadheaderArr.push($.getdata('cmmadheader'))
 cmmadbodyArr.push($.getdata('cmmadbody'))
 let cmmcount = ($.getval('cmmcount') || '1');
@@ -162,9 +164,9 @@ async function checkin(day_index) {
         }
         $.post(tasklist_url, async (error, response, data) => {
             try {
+                $.log("签到结果：" + data)
                 const result = JSON.parse(data)
                 if (result.errCode == 0) {
-                    $.log("签到结果：" + data)
                 } else
                     $.log(result.errMsg + "\n")
             } catch (e) {
