@@ -25,6 +25,8 @@ https://bp-api.coohua.com/bubuduo-cmm/ad/lookVideo url script-request-body https
 hostname = api-service.chanmama.com
 
 
+
+
 */
 
 
@@ -54,8 +56,9 @@ var minute = ''
 if ($.isNode()) {
     hour = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).getHours();
     minute = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).getMinutes();
+    day = new Date(new Date().getTime() + 8 * 60 * 60 * 1000).getDay();
 } else {
-    data = (new Date()).getDay();
+    day = (new Date()).getDay();
     hour = (new Date()).getHours();
     minute = (new Date()).getMinutes();
 }
@@ -65,8 +68,8 @@ if (isGetCookie) {
     GetCookie();
     $.done()
 }
-
-cmmheaderArr.push($.getdata('cmmheader'))
+var cmmh = `{"device":"app","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","Content-Type":"application/json","User-Agent":"chanmama-ios/1.8.4","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI1MjUyNDAwLCJpYXQiOjE2MjI3MDg1NjEsImlkIjoxMzY5MDczfQ.LzPFU9wffebLToq29GoIexbx533_7vc44ojlo5MvzzE","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI1MjUyNDAwLCJpYXQiOjE2MjI3MDg1NjEsImlkIjoxMzY5MDczfQ.LzPFU9wffebLToq29GoIexbx533_7vc44ojlo5MvzzE","Host":"api-service.chanmama.com","Date":"Mon, 21 Jun 2021 10:08:15 +0800","Accept-Language":"zh-cn","Accept":"*/*","X-Client-Id":"IOS8A913483-81E5-4109-A16D-BD5027CF8B7D"}`
+cmmheaderArr.push(cmmh)
 cmmadheaderArr.push($.getdata('cmmadheader'))
 cmmadbodyArr.push($.getdata('cmmadbody'))
 let cmmcount = ($.getval('cmmcount') || '1');
@@ -90,6 +93,7 @@ for (let i = 2; i <= cmmcount; i++) {
             $.index = i + 1;
             console.log(`\n开始【蝉妈妈${$.index}】`)
             await startTask()
+
         }
     }
 })()
@@ -104,12 +108,11 @@ function GetCookie() {
         $.log(`[${magger}] 获取cmmheader请求: 成功,cmmheader: ${cmmheader}`)
         $.msg(`cmmheader${status}: 成功🎉`, ``)
     }
-    
+
 }
 async function startTask() {
 
     return new Promise((resolve) => {
-        console.log(`cmmheader:${cmmheader}`)
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/info`,
             headers: JSON.parse(cmmheader),
@@ -118,31 +121,78 @@ async function startTask() {
         $.get(tasklist_url, async (error, response, data) => {
             try {
                 const result = JSON.parse(data)
-                console.log(data)
-                if (result.code == 0) {
-                    // let statues = data.match(/"state":\d/g)
-                    // let statu0 = statues[0].replace(/"state":/, "")
-                    // let statu1 = statues[1].replace(/"state":/, "")
-                    // let statu2 = statues[2].replace(/"state":/, "")
-                    // let statu3 = statues[3].replace(/"state":/, "")
-                    // let statu4 = statues[4].replace(/"state":/, "")
-                    // let statu5 = statues[5].replace(/"state":/, "")
-                    // let statu6 = statues[6].replace(/"state":/, "")
-                    // let statu7 = statues[7].replace(/"state":/, "")
-                    // if (statu0 == 2 && statu1 == 2 && statu2 == 2 && statu3 == 2 && statu4 == 2 && statu5 == 2 && statu6 == 2 && statu7 == 2) {
-                    //     $.log("每日福利已完成\n")
-                    //     $.log("福利完成进度：" + result.result.redNum + "/" + result.result.redNumLimit + "\n")
-                    // } else {
-                    //     let taskid = data.match(/taskId":\d+/g)
-                    //     //$.log(taskid)
-                    //     for (let i = 0; i < taskid.length; i++) {
-                    //         id = taskid[i].replace(/taskId":/, "")
-                    //         await getReward()
-                    //         await daily()
-                    //     }
-                    // }
+                if (result.errCode == 0) {
+                    /*  {
+                            "day_index" : 1,
+                            "score" : 10,
+                            "can_attendance" : false,
+                            "can_compensate" : false,
+                            "day" : 1623772800,
+                            "title" : "第1天",
+                            "is_attendance" : true
+                        } */
+                    result.data.attendance.forEach(element => {
+                        const newDay = (new Date(element.day * 1000)).getDay();
+                        if (day === newDay) {
+                            checkin(element.day_index)
+                            report()
+                        }
+
+                    });
+
+
+
                 } else
                     $.log(result.message + "\n")
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve(0);
+            }
+        })
+    })
+}
+async function checkin(day_index) {
+    return new Promise((resolve) => {
+        let tasklist_url = {
+            url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/checkin`,
+            headers: JSON.parse(cmmheader),
+            body: `{"day":${day_index}}`
+
+        }
+        $.post(tasklist_url, async (error, response, data) => {
+            try {
+                const result = JSON.parse(data)
+                if (result.errCode == 0) {
+                    $.log("签到结果：" + data)
+                } else
+                    $.log(result.errMsg + "\n")
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
+async function report() {
+    return new Promise((resolve) => {
+        let tasklist_url = {
+            url: `https://api-service.chanmama.com/v1/mission/report`,
+            headers: JSON.parse(cmmheader),
+            body: `{"sign": "a6629b36f2c94c2ba7af32d3967b59e6",
+                    "extend": "",
+                    "mission_type": "rank",
+                    "timestamp": 1624244161}`
+
+        }
+        $.post(tasklist_url, async (error, response, data) => {
+            try {
+                const result = JSON.parse(data)
+                if (result.errCode == 0) {
+                    $.log("分享结果：" + data)
+                } else
+                    $.log(result.errMsg + "\n")
             } catch (e) {
                 $.logErr(e, response);
             } finally {
