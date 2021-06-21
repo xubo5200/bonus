@@ -109,7 +109,7 @@ function GetCookie() {
 async function startTask() {
 
     return new Promise((resolve) => {
-        console.log(`\n开始【蝉妈妈${$.index}】`)
+        
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/info`,
             headers: JSON.parse(cmmheader),
@@ -118,7 +118,7 @@ async function startTask() {
         $.get(tasklist_url, async (error, response, data) => {
             try {
                 const result = JSON.parse(data)
-                if (logs) $.log(data)
+                console.log(data)
                 if (result.code == 0) {
                     // let statues = data.match(/"state":\d/g)
                     // let statu0 = statues[0].replace(/"state":/, "")
