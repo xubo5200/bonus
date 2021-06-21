@@ -109,7 +109,7 @@ function GetCookie() {
 async function startTask() {
 
     return new Promise((resolve) => {
-        
+        console.log(`cmmheader:${cmmheader}`)
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/info`,
             headers: JSON.parse(cmmheader),
