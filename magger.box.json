@@ -10,7 +10,7 @@
                         "id": "klct",
                         "name": "快乐餐厅",
                         "keys": ["klctheader", "klctheader2","klctheader3", "klctheader4", "klctheader5","klctheader6", "klctheader7", "klctheader8","klctheader9", "klctheader10"],
-                        "author": "@Ariszy",
+                        "author": "@Magger",
                         "settings": [{
                                 "id": "tz",
                                 "name": "静默运行",
@@ -40,7 +40,7 @@
                         "id": "cmm",
                         "name": "蝉妈妈",
                         "keys": ["cmmheader", "cmmheader2","cmmheader3", "cmmheader4", "cmmheader5","cmmheader6", "cmmheader7", "cmmheader8","cmmheader9", "cmmheader10"],
-                        "author": "@Ariszy",
+                        "author": "@Magger",
                         "settings": [{
                                 "id": "tz",
                                 "name": "静默运行",
