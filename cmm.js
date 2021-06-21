@@ -124,21 +124,15 @@ async function startTask() {
         $.get(tasklist_url, async (error, response, data) => {
             try {
                 const result = JSON.parse(data)
+                $.log(`信息结果:${data}`)
                 if (result.errCode == 0) {
-                    /*  {
-                            "day_index" : 1,
-                            "score" : 10,
-                            "can_attendance" : false,
-                            "can_compensate" : false,
-                            "day" : 1623772800,
-                            "title" : "第1天",
-                            "is_attendance" : true
-                        } */
+                   
                     result.data.attendance.forEach(element => {
                         const newDay = (new Date(element.day * 1000)).getDay();
                         if (day === newDay) {
                             checkin(element.day_index)
                             report()
+                            $.log(`当前签到天数:${element.title}`)
                         }
 
                     });
@@ -155,8 +149,7 @@ async function startTask() {
         })
     })
 }
-async function checkin(day_index) {
-    return new Promise((resolve) => {
+ function checkin(day_index) {
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/checkin`,
             headers: JSON.parse(cmmheader),
@@ -176,7 +169,6 @@ async function checkin(day_index) {
                 resolve();
             }
         })
-    })
 }
 async function report() {
     return new Promise((resolve) => {
@@ -191,9 +183,9 @@ async function report() {
         }
         $.post(tasklist_url, async (error, response, data) => {
             try {
+                $.log("分享结果：" + data)
                 const result = JSON.parse(data)
                 if (result.errCode == 0) {
-                    $.log("分享结果：" + data)
                 } else
                     $.log(result.errMsg + "\n")
             } catch (e) {
