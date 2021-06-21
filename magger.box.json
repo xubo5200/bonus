@@ -35,6 +35,36 @@
                         "repo": "https://github.com/xubo5200/bonus/blob/master/klct.js",
                         "icons": ["https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/klct-mini.png", "https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/klct.png"],
                         "script": "https://raw.githubusercontent.com/xubo5200/bonus/master/klct.js"
+                      },
+                      {
+                        "id": "cmm",
+                        "name": "蝉妈妈",
+                        "keys": ["cmmheader", "cmmheader2","cmmheader3", "cmmheader4", "cmmheader5","cmmheader6", "cmmheader7", "cmmheader8","cmmheader9", "cmmheader10"],
+                        "author": "@Ariszy",
+                        "settings": [{
+                                "id": "tz",
+                                "name": "静默运行",
+                                "val": "1",
+                                "type": "number",
+                                "desc": "0为不通知，1为全部通知"
+                            },
+                          {
+                            "id": "cmmstatus",
+                            "name": "当前账号",
+                            "val": "1",
+                            "type": "number",
+                            "desc": "当前账号对应"
+                          },
+                          {
+                            "id": "cmmcount",
+                            "name": "账号个数",
+                            "val": "1",
+                            "type": "number",
+                            "desc": "需要几个账号，数字为几"
+                          }],
+                        "repo": "https://github.com/xubo5200/bonus/blob/master/cmm.js",
+                        "icons": ["https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/cmm-mini.png", "https://raw.githubusercontent.com/Ariszy/Private-Script/master/img/cmm.png"],
+                        "script": "https://raw.githubusercontent.com/xubo5200/bonus/master/cmm.js"
                       }
         ]
 }
