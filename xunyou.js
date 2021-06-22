@@ -4,9 +4,11 @@
 ^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://gitee.com/xubo5200/bonus/raw/master/xunyou.js
 https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-request-header https://gitee.com/xubo5200/bonus/raw/master/xunyou.js
 YYYY-MM-DD HH:mm:ss
+#蝉妈妈
+10 9 * * * https://gitee.com/xubo5200/bonus/raw/master/xunyou.js, tag=迅游加速器, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
 
 */
-
+var crypto = require("crypto");
 const magger = '迅游加速器'
 const $ = Env(magger)
 Date.prototype.Format = function (fmt) { //author: meizz
@@ -68,10 +70,7 @@ function GetCookie() {
         } else {
 
         }
-        var time = new Date().getTime();
-        var date = new Date(time).Format("yyyy-MM-ddThh:mm:ssZ")
-        $.log(Math.floor(time/ 1000))
-        $.log(date)
+
         // $.log($response.body)
         // $.log(`\n ${data}`)
         $.msg(`xyjsqheader: 成功🎉`, ``)
@@ -81,12 +80,18 @@ function GetCookie() {
 async function startTask() {
 
     return new Promise((resolve) => {
+        let time = new Date().getTime();
+        let created = getCreated(time)
+        let secend = Math.floor(time/1000)
+        let nonce = getNonce(secend)
+        let passwordDigest = getPasswordDigest(nonce+created)
+
         let tasklist_url = {
             url: `https://api.xunyou.mobi/apis/v1/android/session/${$.getdata('xyjsqsessionId')}/refresh?version=4.5.21_1&channel=ios`,
             headers: `{
-                "X-WSSE":"UsernameToken Username='Game', PasswordDigest='1WOsq6i/aMlWmh7I3e+4akKsBp8=', Nonce='9224a996e9f2d8ad76c935a5a5af2400190414a2', Created='2021-06-22T10:49:30Z'",
+                "X-WSSE":"UsernameToken Username='Game', PasswordDigest='${passwordDigest}', Nonce='${nonce}', Created='${created}'",
                 "Accept-Encoding":"gzip, deflate, br",
-                "accessToken":"e4cc5e63-0174-4980-a268-a36562376399",
+                "accessToken":"${$.getdata('xyjsqaccessToken')}",
                 "Connection":"keep-alive",
                 "Content-Type":"application/json",
                 "userId":"${$.getdata('xyjspuserId')}",
@@ -96,28 +101,24 @@ async function startTask() {
                 "Accept-Language":"zh-cn",
                 "Accept":"*/*",
                 "Content-Length":"56"}`,
+            body:`{"refreashToken":"${$.getdata('xyjsqrefreashToken')}"}`
 
         }
         $.get(tasklist_url, async (error, response, data) => {
             try {
+                $.log(data)
                 const result = JSON.parse(data)
-                $.log(`信息结果:${data}`)
-                if (result.errCode == 0) {
-
-                    result.data.attendance.forEach(element => {
-                        const newDay = (new Date(element.day * 1000)).getDay();
-                        if (day === newDay) {
-                            checkin(element.day_index)
-                            report()
-                            $.log(`当前签到天数:${element.title}`)
-                        }
-
-                    });
-
-
-
-                } else
-                    $.log(result.message + "\n")
+                if (result.resultCode === 0 && result.sessionInfo) {
+                    $.setdata(data.sessionInfo.userId, `xyjsquserId`)
+                    $.setdata(data.sessionInfo.accessToken, `xyjsqaccessToken`)
+                    $.setdata(data.sessionInfo.refreshToken, `xyjsqrefreshToken`)
+                    $.setdata(data.sessionInfo.sessionId, `xyjsqsessionId`)
+                    if (result.tokenInfo)
+                        $.setdata(data.tokenInfo.accelToken, `xyjsqaccelToken`)
+                } else {
+        
+                    // $.log(result.message + "\n")
+                }
             } catch (e) {
                 $.logErr(e, response);
             } finally {
@@ -126,7 +127,28 @@ async function startTask() {
         })
     })
 }
-function checkin(day_index) {
+function getCreated(time) {
+    var date = new Date(time).Format("yyyy-MM-ddThh:mm:ssZ")
+    // $.log(Math.floor(time/ 1000))
+    // $.log(date)
+    return date;
+}
+function getNonce(time) {
+    var sha = sha1(`SuBao${time}`)
+    return sha
+}
+function getPasswordDigest(pwd) {
+    var sha = sha1(pwd + "!Peqchdka()z?")
+    var b = new Buffer.from(sha, 'hex');
+
+    return b.toString('base64');
+}
+function sha1(initPWD) {
+    var sha1 = crypto.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
+    var password = sha1.update(initPWD).digest('hex');
+    return password;
+}
+async function checkin(day_index) {
     return new Promise((resolve) => {
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/checkin`,
