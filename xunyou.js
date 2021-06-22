@@ -78,7 +78,6 @@ function GetCookie() {
                 $.log(`data.tokenInfo.accelToken:${data.tokenInfo.accelToken}`)
             }
         } else {
-            $.msg(`失败`, ``)
         }
 
         // $.log($response.body)
@@ -91,10 +90,15 @@ async function startTask() {
 
     return new Promise((resolve) => {
         let time = new Date().getTime();
+        $.log("time:"+time)
         let created = getCreated(time)
+        $.log("created:"+created)
         let secend = Math.floor(time / 1000)
+        $.log("secend:"+secend)
         let nonce = getNonce(secend)
+        $.log("nonce:"+nonce)
         let passwordDigest = getPasswordDigest(nonce + created)
+        $.log("passwordDigest:"+passwordDigest)
 
         let tasklist_url = {
             url: `https://api.xunyou.mobi/apis/v1/android/session/${$.getdata('xyjsqsessionId')}/refresh?version=4.5.21_1&channel=ios`,
