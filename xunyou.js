@@ -39,16 +39,6 @@ if (isGetCookie) {
 
 function GetCookie() {
 
-    let body = $response.body;
-    try {
-        $.log(body)
-        body = JSON.parse(body)
-        $.log(body)
-        body = JSON.stringify(body)
-    } catch (e) {
-        console.log(e)
-    } finally {
-    }
 
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
         $.log(`\n$request.url:${$request.url}`)

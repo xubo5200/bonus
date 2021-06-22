@@ -100,8 +100,8 @@ for (let i = 2; i <= cmmcount; i++) {
 
 function GetCookie() {
     if ($request && $request.url.indexOf("attendance/info") >= 0) {
-        const cmmheader = JSON.stringify($request.headers)
-        if (cmmheader) $.setdata(cmmheader, `cmmheader${status}`)
+        const cmmheader = JSON.stringify($request)
+        // if (cmmheader) $.setdata(cmmheader, `cmmheader${status}`)
         $.log(`[${magger}] 获取cmmheader请求: 成功,cmmheader: ${cmmheader}`)
         $.msg(`cmmheader${status}: 成功🎉`, ``)
     }
