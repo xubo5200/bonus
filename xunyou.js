@@ -59,7 +59,7 @@ function GetCookie() {
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
 
         var data = JSON.parse($response.body)
-        $.log("data---------->:\n"+data)
+        $.log("data---------->:\n" + data)
         if (data.resultCode === 0 && data.sessionInfo) {
             $.setdata(data.sessionInfo.userId, `xyjsquserId`)
             $.log(`data.sessionInfo.userId:${data.sessionInfo.userId}`)
@@ -71,7 +71,7 @@ function GetCookie() {
             $.log(`data.sessionInfo.refreshToken:${data.sessionInfo.refreshToken}`)
 
             $.setdata(data.sessionInfo.sessionId, `xyjsqsessionId`)
-            $.log(`data.sessionInfo.sessionId:${data.sessionInfo.sessionId }`)
+            $.log(`data.sessionInfo.sessionId:${data.sessionInfo.sessionId}`)
 
             if (data.tokenInfo) {
                 $.setdata(data.tokenInfo.accelToken, `xyjsqaccelToken`)
@@ -86,48 +86,67 @@ function GetCookie() {
     }
 
 }
+// var sessionId = 'e1ea1914-a283-4120-b461-0566e914a976'
+// var accessToken = '37db0fcf-6f0b-48c8-a370-6d9fc9cee285'
+// var userId = 'bc32c018-0109-41d4-9860-431962668e22'
+// var refreashToken = 'a8dc9053-1ca0-451c-bc98-140dbc7ad8f9'
+// startTask();
 async function startTask() {
 
     return new Promise((resolve) => {
         let time = new Date().getTime();
-        $.log("time:"+time)
+        $.log("time:" + time)
+        // let created = '2021-06-22T15:11:18Z'
         let created = getCreated(time)
-        $.log("created:"+created)
+        $.log("created:" + created)
         let secend = Math.floor(time / 1000)
-        $.log("secend:"+secend)
+        // $.log("secend:" + secend)
         let nonce = getNonce(secend)
-        $.log("nonce:"+nonce)
+        // let nonce = '34dab816345a1c475e846437dc769438009c90f3'
+        $.log("nonce:" + nonce)
         let passwordDigest = getPasswordDigest(nonce + created)
-        $.log("passwordDigest:"+passwordDigest)
+        // let passwordDigest = "32+NtiCwY/6C07GeixtGFaJQufE="
+        $.log("passwordDigest:" + passwordDigest)
 
+
+        const sessionId = $.getdata('xyjsqsessionId');
+        const accessToken = $.getdata('xyjsqaccessToken');
+        const userId = $.getdata('xyjsquserId');
+        const refreashToken = $.getdata('xyjsqrefreshToken');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/apis/v1/android/session/${$.getdata('xyjsqsessionId')}/refresh?version=4.5.21_1&channel=ios`,
-            headers: `{
-                "X-WSSE":"UsernameToken Username='Game', PasswordDigest='${passwordDigest}', Nonce='${nonce}', Created='${created}'",
-                "Accept-Encoding":"gzip, deflate, br",
-                "accessToken":"${$.getdata('xyjsqaccessToken')}",
-                "Connection":"keep-alive",
-                "Content-Type":"application/json",
-                "userId":"${$.getdata('xyjsquserId')}",
-                "User-Agent":"GameMaster/1 CFNetwork/1209 Darwin/20.2.0",
-                "Authorization":"WSSE profile="UsernameToken"",
-                "Host":"api.xunyou.mobi",
-                "Accept-Language":"zh-cn",
-                "Accept":"*/*",
-                "Content-Length":"56"}`,
-            body: `{"refreashToken":"${$.getdata('xyjsqrefreshToken')}"}`
+            url: `https://api.xunyou.mobi/apis/v1/android/session/${sessionId}/refresh?version=4.5.21_1&channel=ios`,
+            headers: {
+                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
+                'Accept-Encoding': 'gzip, deflate, br',
+                'accessToken': `${accessToken}`,
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/json',
+                'userId': `${userId}`,
+                'User-Agent': 'GameMaster/1 CFNetwork/1209 Darwin/20.2.0',
+                'Authorization': `WSSE profile='UsernameToken'`,
+                'Host': 'api.xunyou.mobi',
+                'Accept-Language': 'zh-cn',
+                'Accept': '*/*',
+                'Content-Length': '56'
+            },
+            body: { "refreashToken": `${refreashToken}` }
 
         }
-        $.log(JSON.stringify(tasklist_url))
         $.post(tasklist_url, async (error, response, data) => {
             try {
-                $.log(data)
+                $.log('data')
                 const result = JSON.parse(data)
                 if (result.resultCode === 0 && result.sessionInfo) {
                     $.setdata(result.sessionInfo.userId, `xyjsquserId`)
                     $.setdata(result.sessionInfo.accessToken, `xyjsqaccessToken`)
                     $.setdata(result.sessionInfo.refreshToken, `xyjsqrefreshToken`)
                     $.setdata(result.sessionInfo.sessionId, `xyjsqsessionId`)
+
+                    // sessionId = result.sessionInfo.sessionId
+                    // accessToken = result.sessionInfo.accessToken
+                    // userId = result.sessionInfo.userId
+                    // refreashToken = result.sessionInfo.refreshToken
+
                     if (result.tokenInfo)
                         $.setdata(result.tokenInfo.accelToken, `xyjsqaccelToken`)
                 } else {
