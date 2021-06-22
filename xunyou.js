@@ -10,17 +10,7 @@
 const magger = '迅游加速器'
 const $ = Env(magger)
 
-let body = $response.body;
-try {
-    $.log(body)
-    body = JSON.parse(body)
-    $.log(body)
-    body = JSON.stringify(body)
-} catch (e) {
-    console.log(e)
-} finally {
-    $done({ body })
-}
+
 const notify = $.isNode() ? require('./sendNotify') : '';
 let xyjsqheader = $.getdata('xyjsqheader')
 let xyjsqadheader = $.getdata('xyjsqadheader')
@@ -48,6 +38,19 @@ if (isGetCookie) {
 
 
 function GetCookie() {
+
+    let body = $response.body;
+    try {
+        $.log(body)
+        body = JSON.parse(body)
+        $.log(body)
+        body = JSON.stringify(body)
+    } catch (e) {
+        console.log(e)
+    } finally {
+        $done({ body })
+    }
+
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
         $.log(`\n$request.url:${$request.url}`)
         $.log(`\n$request.body:${$request.body}`)
