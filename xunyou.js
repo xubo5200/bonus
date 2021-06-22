@@ -61,9 +61,9 @@ function GetCookie() {
         $.msg(`xyjsqheader: 成功🎉`, ``)
 
 
-        // var data = JSON.stringify($request.body)
-        // $.log($request.body)
-        // $.log(`\n ${data}`)
+        var data = JSON.stringify($response.body)
+        $.log($response.body)
+        $.log(`\n ${data}`)
     }
 
 }
