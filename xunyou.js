@@ -134,9 +134,9 @@ async function startTask() {
         }
         $.post(tasklist_url, async (error, response, data) => {
             try {
-                $.log(data)
-                $.log(error)
-                $.log(response)
+                $.log("data:"+data)
+                $.log("error:"+JSON.parse(error))
+                $.log("response:"+JSON.parse(response))
                 const result = JSON.parse(data)
                 if (result.resultCode === 0 && result.sessionInfo) {
                     $.setdata(result.sessionInfo.userId, `xyjsquserId`)
