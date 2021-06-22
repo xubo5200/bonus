@@ -7,16 +7,20 @@
 */
 
 
+const magger = '迅游加速器'
+const $ = Env(magger)
+
 let body = $response.body;
 try {
     $.log(body)
+    body = JSON.parse(body)
+    $.log(body)
+    body = JSON.stringify(body)
 } catch (e) {
     console.log(e)
 } finally {
     $done({ body })
 }
-const magger = '迅游加速器'
-const $ = Env(magger)
 const notify = $.isNode() ? require('./sendNotify') : '';
 let xyjsqheader = $.getdata('xyjsqheader')
 let xyjsqadheader = $.getdata('xyjsqadheader')
