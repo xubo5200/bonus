@@ -143,7 +143,7 @@ function getPasswordDigest(pwd) {
     return b.toString('base64');
 }
 function sha1(initPWD) {
-    var sha1 = crypto.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
+    var sha1 = Crypto.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
     var password = sha1.update(initPWD).digest('hex');
     return password;
 }
