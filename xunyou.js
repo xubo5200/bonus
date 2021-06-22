@@ -108,14 +108,14 @@ async function startTask() {
                 "accessToken":"${$.getdata('xyjsqaccessToken')}",
                 "Connection":"keep-alive",
                 "Content-Type":"application/json",
-                "userId":"${$.getdata('xyjspuserId')}",
+                "userId":"${$.getdata('xyjsquserId')}",
                 "User-Agent":"GameMaster/1 CFNetwork/1209 Darwin/20.2.0",
                 "Authorization":"WSSE profile="UsernameToken"",
                 "Host":"api.xunyou.mobi",
                 "Accept-Language":"zh-cn",
                 "Accept":"*/*",
                 "Content-Length":"56"}`,
-            body: `{"refreashToken":"${$.getdata('xyjsqrefreashToken')}"}`
+            body: `{"refreashToken":"${$.getdata('xyjsqrefreshToken')}"}`
 
         }
         $.post(tasklist_url, async (error, response, data) => {
