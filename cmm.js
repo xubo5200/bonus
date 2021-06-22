@@ -71,7 +71,7 @@ if (isGetCookie) {
 var cmmh = `{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:28:46 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}`
 // `{"cmmheader":"{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:22:34 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}","cmmheader2":"{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:20:40 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}","cmmheader3":"","cmmheader4":"","cmmheader5":"","cmmheader6":"","cmmheader7":"","cmmheader8":"","cmmheader9":"","cmmheader10":""}`
 // `{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:22:34 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDU3NDcsImlkIjoxMzY5MDczfQ.EaA0Jkr2xBaiL1BZihlEMLBZ9ZaICEto1wpqlC5teWU","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}`
-cmmheaderArr.push(cmmh)
+cmmheaderArr.push($.getdata(`cmmheader`))
 // cmmheaderArr.push(`{"device":"app","Cookie":"LOGIN-TOKEN-FORSNS=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Connection":"keep-alive","Content-Type":"application/json","Date":"Mon, 21 Jun 2021 11:20:40 +0800","Host":"api-service.chanmama.com","Accept":"*/*","User-Agent":"chanmama-ios/1.8.5","Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6MTAwMDMsImV4cGlyZV90aW1lIjoxNjI2ODA3NjAwLCJpYXQiOjE2MjQyNDUyNzIsImlkIjoxNDgzNzIyfQ.n8v9Plx84eJKBCDgSEGDlEFatu2X_7jMkcdC7eJEOk4","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br"}`)
 cmmadheaderArr.push($.getdata('cmmadheader'))
 cmmadbodyArr.push($.getdata('cmmadbody'))
@@ -150,6 +150,7 @@ async function startTask() {
     })
 }
  function checkin(day_index) {
+    return new Promise((resolve) => {
         let tasklist_url = {
             url: `https://api-service.chanmama.com/v1/mission/continuous/attendance/checkin`,
             headers: JSON.parse(cmmheader),
@@ -169,6 +170,7 @@ async function startTask() {
                 resolve();
             }
         })
+    })
 }
 async function report() {
     return new Promise((resolve) => {
