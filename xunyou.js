@@ -1,7 +1,7 @@
 /* 
 圈X配置
 
-^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://raw.githubusercontent.com/xubo5200/bonus/master/xunyou.j
+^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://raw.githubusercontent.com/xubo5200/bonus/master/xunyou.js
 
 
 */
@@ -34,7 +34,7 @@ if (isGetCookie) {
 
 
 function GetCookie() {
-    if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.body.indexOf("refresh") > -1) {
+    if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
         const xyjsqheader = JSON.stringify($request.headers)
         if (xyjsqheader) $.setdata(xyjsqheader, `xyjsqheader`)
         $.log(`[${magger}] 获取xyjsqheader请求: 成功,xyjsqheader: ${xyjsqheader}`)
