@@ -58,7 +58,7 @@ function GetCookie() {
 
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
 
-        var data = $response.body
+        var data = JSON.parse($response.body)
         $.log("data---------->:\n"+data)
         if (data.resultCode === 0 && data.sessionInfo) {
             $.setdata(data.sessionInfo.userId, `xyjsquserId`)
