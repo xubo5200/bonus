@@ -195,7 +195,7 @@ function encodeUTF8(s) {
     return hex;
   }
   
-$.log(sha1(`SuBao1624330718`))
+$.log(Base64.encode(sha1(`55a2c1b3c2c3182f6575e867bb9bf8355ae8317a2021-06-22T10:58:38Z!Peqchdka()z?`)))
 
 
 /* function sha1(initPWD) {
