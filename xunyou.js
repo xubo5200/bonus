@@ -70,7 +70,7 @@ function GetCookie() {
         }
         var time = new Date().getTime();
         var date = new Date(time).Format("yyyy-MM-ddThh:mm:ssZ")
-        $.log(time)
+        $.log(Math.floor(time/ 1000))
         $.log(date)
         // $.log($response.body)
         // $.log(`\n ${data}`)
