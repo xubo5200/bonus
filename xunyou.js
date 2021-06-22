@@ -39,21 +39,21 @@ if (isGetCookie) {
 
 function GetCookie() {
 
-    let body = $response.body;
-    try {
-        $.log(body)
-        body = JSON.parse(body)
-        $.log(body)
-        body = JSON.stringify(body)
-    } catch (e) {
-        console.log(e)
-    } finally {
-    }
+    // let body = $response.body;
+    // try {
+    //     $.log(body)
+    //     body = JSON.parse(body)
+    //     $.log(body)
+    //     body = JSON.stringify(body)
+    // } catch (e) {
+    //     console.log(e)
+    // } finally {
+    // }
 
-    if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
-        $.log(`\n$request.url:${$request.url}`)
-        $.log(`\n$request.body:${$request.body}`)
-        const xyjsqheader = JSON.stringify($request.headers)
+    if ($response && $response.url.indexOf("apis/v1/android/session") > -1 && $response.url.indexOf("/refresh") > -1) {
+        $.log(`\n$request.url:${$response.url}`)
+        $.log(`\n$request.body:${$response.body}`)
+        const xyjsqheader = JSON.stringify($response.headers)
         $.log(`\n$xyjsqheader:${xyjsqheader}`)
         $.log(`\n$request.headers:${$request.headers}`)
         if (xyjsqheader) $.setdata(xyjsqheader, `xyjsqheader`)
