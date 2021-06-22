@@ -10,8 +10,7 @@ YYYY-MM-DD HH:mm:ss
 const magger = '迅游加速器'
 const $ = Env(magger)
 
-var time = new Date().Format("YYYY-MM-DDTHH:mm:ssZ")
-$.log(time)
+
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 let xyjsqheader = $.getdata('xyjsqheader')
@@ -55,6 +54,8 @@ function GetCookie() {
         }else{
 
         }
+        var time = new Date().Format("YYYY-MM-DDTHH:mm:ssZ")
+        $.log(time)
         // $.log($response.body)
         // $.log(`\n ${data}`)
         $.msg(`xyjsqheader: 成功🎉`, ``)
