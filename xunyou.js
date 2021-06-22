@@ -195,7 +195,7 @@ function encodeUTF8(s) {
     return hex;
   }
   
-$.log(sha1(`SuBao1624330718`)
+$.log(sha1(`SuBao1624330718`))
 
 
 /* function sha1(initPWD) {
