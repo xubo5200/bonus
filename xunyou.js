@@ -18,7 +18,7 @@ let xyjsqadbody = $.getdata('xyjsqadbody')
 let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
 const logs = 0;//0为关闭日志，1为开启
 //CK运行
-let isGetCookie = typeof $request !== 'undefined'
+let isGetCookie = typeof $response !== 'undefined'
 if (isGetCookie) {
     GetCookie();
     $.done()
