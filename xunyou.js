@@ -139,9 +139,9 @@ function getNonce(time) {
 //1624330718
 function getPasswordDigest(pwd) {
     var sha = sha1(pwd + "!Peqchdka()z?")
-    var b = new Buffer.from(sha, 'hex');
+    var b = hexToString(sha);
 
-    return b.toString('base64');
+    return btoa(b);
 }
 
 
@@ -194,18 +194,13 @@ function encodeUTF8(s) {
     }).join("");
     return hex;
   }
-  
-$.log(Base64.encode(sha1(`55a2c1b3c2c3182f6575e867bb9bf8355ae8317a2021-06-22T10:58:38Z!Peqchdka()z?`)))
-
-
-/* function sha1(initPWD) {
-    var sha1 = CryptoJS.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
-    var password = sha1.update(initPWD).digest('hex');
-    return password;
-} */
-
-
-
+  function hexToString(hexStr) {
+    var hex = hexStr.toString();//force conversion
+    var str = '';
+    for (var i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
+}
 
 async function checkin(day_index) {
     return new Promise((resolve) => {
