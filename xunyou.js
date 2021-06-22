@@ -48,7 +48,6 @@ function GetCookie() {
     } catch (e) {
         console.log(e)
     } finally {
-        $done({ body })
     }
 
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
