@@ -1,7 +1,7 @@
 /* 
 圈X配置
 
-^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://raw.githubusercontent.com/xubo5200/bonus/master/xunyou.js
+^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://gitee.com/xubo5200/bonus/raw/master/xunyou.js
 
 
 */

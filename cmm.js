@@ -18,9 +18,7 @@ https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 
 [rewrite_local]
 #蝉妈妈
-https://api-service.chanmama.com/v1/mission/continuous/attendance/info url script-request-header https://raw.githubusercontent.com/xubo5200/bonus/master/cmm.js
-https://bp-api.coohua.com/bubuduo-cmm/ad/lookVideo url script-request-body https://raw.githubusercontent.com/xubo5200/bonus/master/cmm.js
-^https://bp-api.coohua.com/bubuduo-cmm/game/sign/reward/list url script-response-body https://raw.githubusercontent.com/xubo5200/bonus/master/cmm.js
+https://api-service.chanmama.com/v1/mission/continuous/attendance/info url script-request-header https://gitee.com/xubo5200/bonus/raw/master/cmm.js
 [MITM]
 hostname = api-service.chanmama.com
 
