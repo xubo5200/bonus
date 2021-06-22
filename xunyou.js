@@ -42,16 +42,13 @@ function GetCookie() {
 
 
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
-        // $.log(`\n$request.url:${$request.url}`)
-        // $.log(`\n$request.body:${$request.body}`)
-        const xyjsqheader = JSON.stringify($request)
-        $.log(`\n$xyjsqheader:${xyjsqheader}`)
-        // $.log(`\n$request.headers:${$request.headers}`)
-        // if (xyjsqheader) $.setdata(xyjsqheader, `xyjsqheader`)
-        // $.log(`[${magger}] 获取xyjsqheader请求: 成功,xyjsqheader: ${xyjsqheader}`)
         
-        
-        // var data = JSON.stringify($response.body)
+        var data = $response.body
+        if(data.resultCode === 0){
+            data.sessionInfo.userId
+        }else{
+
+        }
         $.log($response.body)
         // $.log(`\n ${data}`)
         $.msg(`xyjsqheader: 成功🎉`, ``)
