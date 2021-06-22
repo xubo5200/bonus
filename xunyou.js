@@ -68,8 +68,10 @@ function GetCookie() {
         } else {
 
         }
-        var time = new Date().Format("yyyy-MM-ddThh:mm:ssZ")
+        var time = new Date().getTime();
+        var date = new Date(time).Format("yyyy-MM-ddThh:mm:ssZ")
         $.log(time)
+        $.log(date)
         // $.log($response.body)
         // $.log(`\n ${data}`)
         $.msg(`xyjsqheader: 成功🎉`, ``)
