@@ -118,7 +118,7 @@ async function startTask() {
             body: `{"refreashToken":"${$.getdata('xyjsqrefreshToken')}"}`
 
         }
-        $.log(tasklist_url)
+        $.log(JSON.stringify(tasklist_url))
         $.post(tasklist_url, async (error, response, data) => {
             try {
                 $.log(data)
