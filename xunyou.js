@@ -110,9 +110,13 @@ async function startTask() {
 
 
         const sessionId = $.getdata('xyjsqsessionId');
+        $.log("sessionId:" + sessionId)
         const accessToken = $.getdata('xyjsqaccessToken');
+        $.log("accessToken:" + accessToken)
         const userId = $.getdata('xyjsquserId');
+        $.log("userId:" + userId)
         const refreashToken = $.getdata('xyjsqrefreshToken');
+        $.log("refreashToken:" + refreashToken)
         let tasklist_url = {
             url: `https://api.xunyou.mobi/apis/v1/android/session/${sessionId}/refresh?version=4.5.21_1&channel=ios`,
             headers: {
