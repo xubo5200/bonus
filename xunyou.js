@@ -78,7 +78,7 @@ function GetCookie() {
                 $.log(`data.tokenInfo.accelToken:${data.tokenInfo.accelToken}`)
             }
         } else {
-
+            $.msg(`失败`, ``)
         }
 
         // $.log($response.body)
