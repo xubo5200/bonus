@@ -35,8 +35,9 @@ if (isGetCookie) {
 
 function GetCookie() {
     if ($request && $request.url.indexOf("apis/v1/android/session") > -1 && $request.url.indexOf("/refresh") > -1) {
-        const xyjsqheader = JSON.stringify($request.headers)
+        $.log(`\n$request.url:${$request.url}`)
         $.log(`\n$request.body:${$request.body}`)
+        const xyjsqheader = JSON.stringify($request.headers)
         $.log(`\n$xyjsqheader:${xyjsqheader}`)
         $.log(`\n$request.headers:${$request.headers}`)
         if (xyjsqheader) $.setdata(xyjsqheader, `xyjsqheader`)
