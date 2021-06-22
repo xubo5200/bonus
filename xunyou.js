@@ -81,9 +81,9 @@ async function startTask() {
     return new Promise((resolve) => {
         let time = new Date().getTime();
         let created = getCreated(time)
-        let secend = Math.floor(time/1000)
+        let secend = Math.floor(time / 1000)
         let nonce = getNonce(secend)
-        let passwordDigest = getPasswordDigest(nonce+created)
+        let passwordDigest = getPasswordDigest(nonce + created)
 
         let tasklist_url = {
             url: `https://api.xunyou.mobi/apis/v1/android/session/${$.getdata('xyjsqsessionId')}/refresh?version=4.5.21_1&channel=ios`,
@@ -100,7 +100,7 @@ async function startTask() {
                 "Accept-Language":"zh-cn",
                 "Accept":"*/*",
                 "Content-Length":"56"}`,
-            body:`{"refreashToken":"${$.getdata('xyjsqrefreashToken')}"}`
+            body: `{"refreashToken":"${$.getdata('xyjsqrefreashToken')}"}`
 
         }
         $.get(tasklist_url, async (error, response, data) => {
@@ -115,7 +115,7 @@ async function startTask() {
                     if (result.tokenInfo)
                         $.setdata(data.tokenInfo.accelToken, `xyjsqaccelToken`)
                 } else {
-        
+
                     // $.log(result.message + "\n")
                 }
             } catch (e) {
@@ -136,17 +136,77 @@ function getNonce(time) {
     var sha = sha1(`SuBao${time}`)
     return sha
 }
+//1624330718
 function getPasswordDigest(pwd) {
     var sha = sha1(pwd + "!Peqchdka()z?")
     var b = new Buffer.from(sha, 'hex');
 
     return b.toString('base64');
 }
-function sha1(initPWD) {
-    var sha1 = Crypto.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
+
+
+function encodeUTF8(s) {
+    var i, r = [], c, x;
+    for (i = 0; i < s.length; i++)
+      if ((c = s.charCodeAt(i)) < 0x80) r.push(c);
+      else if (c < 0x800) r.push(0xC0 + (c >> 6 & 0x1F), 0x80 + (c & 0x3F));
+      else {
+        if ((x = c ^ 0xD800) >> 10 == 0) //对四字节UTF-16转换为Unicode
+          c = (x << 10) + (s.charCodeAt(++i) ^ 0xDC00) + 0x10000,
+            r.push(0xF0 + (c >> 18 & 0x7), 0x80 + (c >> 12 & 0x3F));
+        else r.push(0xE0 + (c >> 12 & 0xF));
+        r.push(0x80 + (c >> 6 & 0x3F), 0x80 + (c & 0x3F));
+      };
+    return r;
+  }
+  
+  // 字符串加密成 hex 字符串
+  function sha1(s) {
+    var data = new Uint8Array(encodeUTF8(s))
+    var i, j, t;
+    var l = ((data.length + 8) >>> 6 << 4) + 16, s = new Uint8Array(l << 2);
+    s.set(new Uint8Array(data.buffer)), s = new Uint32Array(s.buffer);
+    for (t = new DataView(s.buffer), i = 0; i < l; i++)s[i] = t.getUint32(i << 2);
+    s[data.length >> 2] |= 0x80 << (24 - (data.length & 3) * 8);
+    s[l - 1] = data.length << 3;
+    var w = [], f = [
+      function () { return m[1] & m[2] | ~m[1] & m[3]; },
+      function () { return m[1] ^ m[2] ^ m[3]; },
+      function () { return m[1] & m[2] | m[1] & m[3] | m[2] & m[3]; },
+      function () { return m[1] ^ m[2] ^ m[3]; }
+    ], rol = function (n, c) { return n << c | n >>> (32 - c); },
+      k = [1518500249, 1859775393, -1894007588, -899497514],
+      m = [1732584193, -271733879, null, null, -1009589776];
+    m[2] = ~m[0], m[3] = ~m[1];
+    for (i = 0; i < s.length; i += 16) {
+      var o = m.slice(0);
+      for (j = 0; j < 80; j++)
+        w[j] = j < 16 ? s[i + j] : rol(w[j - 3] ^ w[j - 8] ^ w[j - 14] ^ w[j - 16], 1),
+          t = rol(m[0], 5) + f[j / 20 | 0]() + m[4] + w[j] + k[j / 20 | 0] | 0,
+          m[1] = rol(m[1], 30), m.pop(), m.unshift(t);
+      for (j = 0; j < 5; j++)m[j] = m[j] + o[j] | 0;
+    };
+    t = new DataView(new Uint32Array(m).buffer);
+    for (var i = 0; i < 5; i++)m[i] = t.getUint32(i << 2);
+  
+    var hex = Array.prototype.map.call(new Uint8Array(new Uint32Array(m).buffer), function (e) {
+      return (e < 16 ? "0" : "") + e.toString(16);
+    }).join("");
+    return hex;
+  }
+  
+
+
+
+/* function sha1(initPWD) {
+    var sha1 = CryptoJS.createHash('sha1');//创建哈希加密算法，后边可以是md5，sha1,sha256等
     var password = sha1.update(initPWD).digest('hex');
     return password;
-}
+} */
+
+
+
+
 async function checkin(day_index) {
     return new Promise((resolve) => {
         let tasklist_url = {
