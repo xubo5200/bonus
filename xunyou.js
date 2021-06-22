@@ -49,12 +49,12 @@ function GetCookie() {
         // $.log(`\n$request.headers:${$request.headers}`)
         // if (xyjsqheader) $.setdata(xyjsqheader, `xyjsqheader`)
         // $.log(`[${magger}] 获取xyjsqheader请求: 成功,xyjsqheader: ${xyjsqheader}`)
-        $.msg(`xyjsqheader: 成功🎉`, ``)
-
-
+        
+        
         var data = JSON.stringify($response.body)
         $.log($response.body)
         $.log(`\n ${data}`)
+        $.msg(`xyjsqheader: 成功🎉`, ``)
     }
 
 }
