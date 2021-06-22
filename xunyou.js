@@ -4,11 +4,10 @@
 ^https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-response-body https://gitee.com/xubo5200/bonus/raw/master/xunyou.js
 https://api.xunyou.mobi/apis/v1/android/session/.*./refresh?.* url script-request-header https://gitee.com/xubo5200/bonus/raw/master/xunyou.js
 YYYY-MM-DD HH:mm:ss
-#蝉妈妈
+#迅游加速器
 10 9 * * * https://gitee.com/xubo5200/bonus/raw/master/xunyou.js, tag=迅游加速器, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
 
 */
-var crypto = require("crypto");
 const magger = '迅游加速器'
 const $ = Env(magger)
 Date.prototype.Format = function (fmt) { //author: meizz
