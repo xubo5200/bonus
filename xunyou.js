@@ -123,12 +123,12 @@ async function startTask() {
                 $.log(data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0 && result.sessionInfo) {
-                    $.setdata(data.sessionInfo.userId, `xyjsquserId`)
-                    $.setdata(data.sessionInfo.accessToken, `xyjsqaccessToken`)
-                    $.setdata(data.sessionInfo.refreshToken, `xyjsqrefreshToken`)
-                    $.setdata(data.sessionInfo.sessionId, `xyjsqsessionId`)
+                    $.setdata(result.sessionInfo.userId, `xyjsquserId`)
+                    $.setdata(result.sessionInfo.accessToken, `xyjsqaccessToken`)
+                    $.setdata(result.sessionInfo.refreshToken, `xyjsqrefreshToken`)
+                    $.setdata(result.sessionInfo.sessionId, `xyjsqsessionId`)
                     if (result.tokenInfo)
-                        $.setdata(data.tokenInfo.accelToken, `xyjsqaccelToken`)
+                        $.setdata(result.tokenInfo.accelToken, `xyjsqaccelToken`)
                 } else {
 
                     // $.log(result.message + "\n")
