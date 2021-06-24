@@ -120,17 +120,17 @@ async function startTask() {
         let tasklist_url = {
             url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks?client_version=5.2.10.4`,
             headers: {
-                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
-                'Accept-Encoding': 'gzip',
-                'accessToken': `${accessToken}`,
-                'Connection': 'keep-alive',
+                'Cache-Control': 'no-cache',
                 'Content-Type': 'application/json',
-                'userId': `${userId}`,
-                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
                 'Authorization': `WSSE profile='UsernameToken'`,
+                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
+                'userId': `${userId}`,
+                'accessToken': `${accessToken}`,
+                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
                 'Host': 'api.xunyou.mobi',
-                'Cache-Control': 'no-cache'
-            },
+                'Connection': 'Keep-Alive',
+                'Accept-Encoding': 'gzip'
+            }
 
         }
         $.get(tasklist_url, async (error, response, data) => {
