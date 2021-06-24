@@ -141,7 +141,7 @@ async function startTask() {
                     $.log(element.taskName + "\n")
 
 
-                    if (element.completedTimes < allTimes) {
+                    if (element.completedTimes < element.allTimes) {
                         for (var i = element.completedTimes; i < allTimes; i++) {
                             if (element.checkPoints) {
 
