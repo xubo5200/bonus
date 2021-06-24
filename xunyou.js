@@ -144,10 +144,14 @@ async function startTask() {
                     if (element.completedTimes < element.allTimes) {
                         for (var i = element.completedTimes; i < element.allTimes; i++) {
                             if (element.checkPoints) {
-                                if(element.checkPoints['6']){
-                                    console.log(element.checkPoints['6'])  // 每项对应数值；
-                                }else if(element.checkPoints['3']){
-                                    console.log(element.checkPoints['3'])  // 每项对应数值；
+                                if (element.checkPoints['6']) {
+                                    doTask(element.taskId, '6')
+                                    $.log("看视频　＋2天VIP,休息"+element.checkPoints['6']+"秒")  // 每项对应数值；
+                                    await $.wait(element.checkPoints['6'])
+                                } else if (element.checkPoints['3']) {
+                                    doTask(element.taskId, '3')
+                                    $.log("看视频　＋1天VIP,休息"+element.checkPoints['3']+"秒")  // 每项对应数值；
+                                    await $.wait(element.checkPoints['6'])
                                 }
                                 // keys.map(key => {
                                 // })
@@ -160,7 +164,104 @@ async function startTask() {
             } catch (e) {
                 $.logErr(e, response);
             } finally {
-                resolve(0);
+                resolve();
+            }
+        })
+    })
+}
+function doTask(taskId, taskCheckValue) {
+    return new Promise((resolve) => {
+        let time = new Date().getTime();
+        let created = getCreated(time)
+        let secend = Math.floor(time / 1000)
+        let nonce = getNonce(secend)
+        let passwordDigest = getPasswordDigest(nonce + created)
+
+        const sessionId = $.getdata('xyjsqsessionId');
+        const accessToken = $.getdata('xyjsqaccessToken');
+        const userId = $.getdata('xyjsquserId');
+        const refreashToken = $.getdata('xyjsqrefreshToken');
+        let tasklist_url = {
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}`,
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json',
+                'Authorization': `WSSE profile="UsernameToken"`,
+                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
+                'userId': `${userId}`,
+                'accessToken': `${accessToken}`,
+                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'Host': 'api.xunyou.mobi',
+                'Connection': 'Keep-Alive',
+                'Accept-Encoding': 'gzip'
+            },
+            body: {
+                "taskCheckValue": `${taskCheckValue}`
+            }
+
+        }
+        $.post(tasklist_url, (error, response, data) => {
+            try {
+                // $.log("data:"+data)
+                const result = JSON.parse(data)
+                if (result.resultCode === 0) {
+                    if (result.taskProgress) {
+                        doCoupon(result.taskProgress[0].paraList.key_couponId)
+                    }
+                } else {
+                    $.log("错误信息：" + result.errorInfo)
+                }
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
+function doCoupon(key_couponId) {
+    return new Promise((resolve) => {
+        let time = new Date().getTime();
+        let created = getCreated(time)
+        let secend = Math.floor(time / 1000)
+        let nonce = getNonce(secend)
+        let passwordDigest = getPasswordDigest(nonce + created)
+
+        const accessToken = $.getdata('xyjsqaccessToken');
+        const userId = $.getdata('xyjsquserId');
+        let tasklist_url = {
+            url: `https://api.xunyou.mobi/apis/v1/android/users/${userId}/coupons/${key_couponId}?version=5.2.10.4`,
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json',
+                'Authorization': `WSSE profile="UsernameToken"`,
+                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
+                'userId': `${userId}`,
+                'accessToken': `${accessToken}`,
+                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'Host': 'api.xunyou.mobi',
+                'Connection': 'Keep-Alive',
+                'Accept-Encoding': 'gzip'
+            },
+            body: {
+                "userId": `${userId}`,
+                "token": `${accessToken}`
+            }
+
+        }
+        $.post(tasklist_url, (error, response, data) => {
+            try {
+                // $.log("data:"+data)
+                const result = JSON.parse(data)
+                if (result.resultCode === 0) {
+                    $.log("兑换成功！！！！！")
+                } else {
+                    $.log("错误信息：" + result.errorInfo)
+                }
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve();
             }
         })
     })
