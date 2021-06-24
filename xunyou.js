@@ -142,10 +142,8 @@ async function startTask() {
 
 
                     if (element.completedTimes < element.allTimes) {
-                        for (var i = element.completedTimes; i < allTimes; i++) {
+                        for (var i = element.completedTimes; i < element.allTimes; i++) {
                             if (element.checkPoints) {
-
-                                
                                 let keys = Object.keys(element.checkPoints);   // ['ftc下限', '参考点01图像坐标'....]
                                 
                                 keys.map(key => {
