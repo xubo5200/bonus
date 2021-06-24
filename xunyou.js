@@ -136,7 +136,8 @@ function startTask() {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
-                                    await $.wait(element.checkPoints['6'])
+                                    break;
+                                    // await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     await doTask(element.taskId, '3')
                                     $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
@@ -189,7 +190,7 @@ function doTask(taskId, taskCheckValue) {
             }
 
         }
-        $.log(tasklist_url.toString())
+        $.log(JSON.stringify(tasklist_url))
 
         $.post(tasklist_url, (error, response, data) => {
             try {
