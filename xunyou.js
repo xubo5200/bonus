@@ -133,7 +133,7 @@ async function startTask() {
             },
 
         }
-        $.post(tasklist_url, async (error, response, data) => {
+        $.get(tasklist_url, async (error, response, data) => {
             try {
                 $.log("data:"+data)
                 const result = JSON.parse(data)
