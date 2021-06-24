@@ -136,12 +136,11 @@ function startTask() {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
-                                    break;
-                                    // await $.wait(element.checkPoints['6'])
+                                    await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     await doTask(element.taskId, '3')
                                     $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
-                                    await $.wait(element.checkPoints['6'])
+                                    await $.wait(element.checkPoints['3'])
                                 }
                                 // keys.map(key => {
                                 // })
@@ -185,9 +184,7 @@ function doTask(taskId, taskCheckValue) {
                 // 'Connection': 'Keep-Alive',
                 // 'Accept-Encoding': 'gzip'
             },
-            body: {
-                'taskCheckValue': `${taskCheckValue}`
-            }
+            body: `{"taskCheckValue": "${taskCheckValue}"}`
 
         }
         $.log(JSON.stringify(tasklist_url))
@@ -237,15 +234,15 @@ function doCoupon(key_couponId) {
                 'Connection': 'Keep-Alive',
                 'Accept-Encoding': 'gzip'
             },
-            body: {
-                'userId': `${userId}`,
-                'token': `${accessToken}`
-            }
+            body: `{
+                "userId": "${userId}",
+                "token": "${accessToken}"
+            }`
 
         }
         $.post(tasklist_url, (error, response, data) => {
             try {
-                // $.log("data:"+data)
+                $.log("data:"+data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
                     $.log("兑换成功！！！！！")
