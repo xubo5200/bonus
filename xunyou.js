@@ -191,6 +191,8 @@ function doTask(taskId, taskCheckValue) {
         }
         $.post(tasklist_url, (error, response, data) => {
             try {
+                $.log("data:"+data)
+                $.log("error:"+error)
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
