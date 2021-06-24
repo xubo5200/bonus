@@ -93,7 +93,7 @@ function GetCookie() {
 // startTask();
 async function startTask() {
 
-    return new Promise((resolve) => {
+    return new Promise(async resolve => {
         let time = new Date().getTime();
         $.log("time:" + time)
         // let created = '2021-06-22T15:11:18Z'
@@ -147,11 +147,11 @@ async function startTask() {
                                 if (element.checkPoints['6']) {
                                     doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息"+element.checkPoints['6']+"秒")  // 每项对应数值；
-                                    $.wait(element.checkPoints['6'])
+                                    await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     doTask(element.taskId, '3')
                                     $.log("看视频　＋1天VIP,休息"+element.checkPoints['3']+"秒")  // 每项对应数值；
-                                    $.wait(element.checkPoints['6'])
+                                    await $.wait(element.checkPoints['6'])
                                 }
                                 // keys.map(key => {
                                 // })
