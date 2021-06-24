@@ -189,6 +189,8 @@ function doTask(taskId, taskCheckValue) {
             }
 
         }
+        $.log(tasklist_url.toString())
+
         $.post(tasklist_url, (error, response, data) => {
             try {
                 $.log("data:"+data)
