@@ -135,10 +135,27 @@ async function startTask() {
         }
         $.get(tasklist_url, async (error, response, data) => {
             try {
-                $.log("data:"+data)
+                // $.log("data:"+data)
                 const result = JSON.parse(data)
                 result.taskList.forEach(element => {
-                    $.log(element.taskName+"\n")
+                    $.log(element.taskName + "\n")
+
+
+                    if (element.completedTimes < allTimes) {
+                        for (var i = element.completedTimes; i < allTimes; i++) {
+                            if (element.checkPoints) {
+
+                                
+                                let keys = Object.keys(element.checkPoints);   // ['ftc下限', '参考点01图像坐标'....]
+                                
+                                keys.map(key => {
+                                    console.log(key)  // 每项对应数值；
+                                })
+                            }
+                        }
+                    }
+
+
                 });
             } catch (e) {
                 $.logErr(e, response);
