@@ -130,8 +130,8 @@ function startTask() {
                     $.log(element.taskName + "\n")
 
 
-                    if (element.completedTimes < element.allTimes) {
-                        for (var i = element.completedTimes; i < element.allTimes; i++) {
+                    if (element.completedTimes <= element.allTimes) {
+                        for (var i = element.completedTimes; i <= element.allTimes; i++) {
                             if (element.checkPoints) {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
