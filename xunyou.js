@@ -135,11 +135,11 @@ function startTask() {
                             if (element.checkPoints) {
                                 if (element.checkPoints['6']) {
                                     doTask(element.taskId, '6')
-                                    $.log("看视频　＋2天VIP,休息" + element.checkPoints['6'] + "秒")  // 每项对应数值；
+                                    $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     doTask(element.taskId, '3')
-                                    $.log("看视频　＋1天VIP,休息" + element.checkPoints['3'] + "秒")  // 每项对应数值；
+                                    $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 }
                                 // keys.map(key => {
