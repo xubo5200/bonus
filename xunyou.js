@@ -146,7 +146,7 @@ async function startTask() {
                             if (element.checkPoints) {
                                 let keys = Object.keys(element.checkPoints);   // ['ftc下限', '参考点01图像坐标'....]
                                 if(keys.indexOf('6') > -1){
-                                    console.log(keys['6'])  // 每项对应数值；
+                                    console.log(element.checkPoints['6'])  // 每项对应数值；
                                 }
                                 // keys.map(key => {
                                 // })
