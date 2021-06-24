@@ -1,4 +1,4 @@
-// Native ArrayBuffer to Base64
+base64ArrayBuffer// Native ArrayBuffer to Base64
 function base64ArrayBuffer(arrayBuffer) {
     var base64    = ''
     var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
@@ -186,5 +186,6 @@ function base64ArrayBuffer(arrayBuffer) {
   //stringToBase64 stringToBytes stringToHex
   //hexToBytes hexToString hexToBase64
   //base64ToString base64ToHex
-  var b = hexToBase64('d4739fea085bf98846754fd483b6f2b28f9d93d5');
-  console.log(b)
+  module.exports = {
+    base64ArrayBuffer
+  }
