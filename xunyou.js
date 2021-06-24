@@ -122,7 +122,7 @@ async function startTask() {
             headers: {
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'application/json',
-                'Authorization': `WSSE profile='UsernameToken'`,
+                'Authorization': `WSSE profile="UsernameToken"`,
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
                 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
