@@ -200,6 +200,50 @@ function doTask(taskId, taskCheckValue) {
                         doCoupon(result.taskProgress[0].paraList.key_couponId)
                     }
                 } else {
+                    getCouponId()
+                    $.log("错误信息：" + result.errorInfo)
+                }
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
+function getCouponId() {
+    return new Promise((resolve) => {
+        let time = new Date().getTime();
+        let created = getCreated(time)
+        let secend = Math.floor(time / 1000)
+        let nonce = getNonce(secend)
+        let passwordDigest = getPasswordDigest(nonce + created)
+
+        const accessToken = $.getdata('xyjsqaccessToken');
+        const userId = $.getdata('xyjsquserId');
+        let tasklist_url = {
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/history/coupons?before=${time}&n=200`,
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json',
+                'Authorization': `WSSE profile="UsernameToken"`,
+                'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
+                'userId': `${userId}`,
+                'accessToken': `${accessToken}`,
+                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'Host': 'api.xunyou.mobi',
+                'Connection': 'Keep-Alive',
+                'Accept-Encoding': 'gzip'
+            },
+
+        }
+        $.get(tasklist_url, (error, response, data) => {
+            try {
+                $.log("data:"+data)
+                const result = JSON.parse(data)
+                if (result.resultCode === 0) {
+                    $.log("获取成功！！！！！")
+                } else {
                     $.log("错误信息：" + result.errorInfo)
                 }
             } catch (e) {
