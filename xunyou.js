@@ -134,11 +134,11 @@ function startTask() {
                         for (var i = element.completedTimes; i < element.allTimes; i++) {
                             if (element.checkPoints) {
                                 if (element.checkPoints['6']) {
-                                    doTask(element.taskId, '6')
+                                    await doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
-                                    doTask(element.taskId, '3')
+                                    await doTask(element.taskId, '3')
                                     $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 }
@@ -173,16 +173,16 @@ function doTask(taskId, taskCheckValue) {
         let tasklist_url = {
             url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}`,
             headers: {
-                'Cache-Control': 'no-cache',
-                'Content-Type': 'application/json',
+                // 'Cache-Control': 'no-cache',
+                // 'Content-Type': 'application/json',
                 'Authorization': `WSSE profile="UsernameToken"`,
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
-                'userId': `${userId}`,
+                // 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
-                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
-                'Host': 'api.xunyou.mobi',
-                'Connection': 'Keep-Alive',
-                'Accept-Encoding': 'gzip'
+                // 'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                // 'Host': 'api.xunyou.mobi',
+                // 'Connection': 'Keep-Alive',
+                // 'Accept-Encoding': 'gzip'
             },
             body: {
                 'taskCheckValue': `${taskCheckValue}`
