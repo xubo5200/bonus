@@ -91,32 +91,19 @@ function GetCookie() {
 // var userId = 'bc32c018-0109-41d4-9860-431962668e22'
 // var refreashToken = 'a8dc9053-1ca0-451c-bc98-140dbc7ad8f9'
 // startTask();
-async function startTask() {
+function startTask() {
 
     return new Promise(async resolve => {
         let time = new Date().getTime();
-        $.log("time:" + time)
-        // let created = '2021-06-22T15:11:18Z'
         let created = getCreated(time)
-        $.log("created:" + created)
         let secend = Math.floor(time / 1000)
-        // $.log("secend:" + secend)
         let nonce = getNonce(secend)
-        // let nonce = '34dab816345a1c475e846437dc769438009c90f3'
-        $.log("nonce:" + nonce)
         let passwordDigest = getPasswordDigest(nonce + created)
-        // let passwordDigest = "32+NtiCwY/6C07GeixtGFaJQufE="
-        $.log("passwordDigest:" + passwordDigest)
-
 
         const sessionId = $.getdata('xyjsqsessionId');
-        $.log("sessionId:" + sessionId)
         const accessToken = $.getdata('xyjsqaccessToken');
-        $.log("accessToken:" + accessToken)
         const userId = $.getdata('xyjsquserId');
-        $.log("userId:" + userId)
         const refreashToken = $.getdata('xyjsqrefreshToken');
-        $.log("refreashToken:" + refreashToken)
         let tasklist_url = {
             url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks?client_version=5.2.10.4`,
             headers: {
@@ -137,7 +124,9 @@ async function startTask() {
             try {
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
-                result.taskList.forEach(element => {
+
+                for (const element of result.taskList) {
+
                     $.log(element.taskName + "\n")
 
 
@@ -146,11 +135,11 @@ async function startTask() {
                             if (element.checkPoints) {
                                 if (element.checkPoints['6']) {
                                     doTask(element.taskId, '6')
-                                    $.log("看视频　＋2天VIP,休息"+element.checkPoints['6']+"秒")  // 每项对应数值；
+                                    $.log("看视频　＋2天VIP,休息" + element.checkPoints['6'] + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     doTask(element.taskId, '3')
-                                    $.log("看视频　＋1天VIP,休息"+element.checkPoints['3']+"秒")  // 每项对应数值；
+                                    $.log("看视频　＋1天VIP,休息" + element.checkPoints['3'] + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 }
                                 // keys.map(key => {
@@ -160,13 +149,13 @@ async function startTask() {
                     }
 
 
-                });
-            } catch (e) {
-                $.logErr(e, response);
-            } finally {
-                resolve();
-            }
-        })
+                };
+    } catch (e) {
+        $.logErr(e, response);
+    } finally {
+        resolve();
+    }
+})
     })
 }
 function doTask(taskId, taskCheckValue) {
