@@ -144,9 +144,10 @@ async function startTask() {
                     if (element.completedTimes < element.allTimes) {
                         for (var i = element.completedTimes; i < element.allTimes; i++) {
                             if (element.checkPoints) {
-                                let keys = Object.keys(element.checkPoints);   // ['ftc下限', '参考点01图像坐标'....]
-                                if(keys.indexOf('6') > -1){
+                                if(element.checkPoints['6']){
                                     console.log(element.checkPoints['6'])  // 每项对应数值；
+                                }else if(element.checkPoints['3']){
+                                    console.log(element.checkPoints['3'])  // 每项对应数值；
                                 }
                                 // keys.map(key => {
                                 // })
