@@ -118,48 +118,28 @@ async function startTask() {
         const refreashToken = $.getdata('xyjsqrefreshToken');
         $.log("refreashToken:" + refreashToken)
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/apis/v1/android/session/${sessionId}/refresh?version=4.5.21_1&channel=ios`,
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks?client_version=5.2.10.4`,
             headers: {
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
-                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Encoding': 'gzip',
                 'accessToken': `${accessToken}`,
                 'Connection': 'keep-alive',
                 'Content-Type': 'application/json',
                 'userId': `${userId}`,
-                'User-Agent': 'GameMaster/1 CFNetwork/1209 Darwin/20.2.0',
+                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
                 'Authorization': `WSSE profile='UsernameToken'`,
                 'Host': 'api.xunyou.mobi',
-                'Accept-Language': 'zh-cn',
-                'Accept': '*/*',
-                'Content-Length': '56'
+                'Cache-Control': 'no-cache'
             },
-            body: { "refreashToken": `${refreashToken}` }
 
         }
-        $.log("header:"+JSON.stringify(tasklist_url.headers))
         $.post(tasklist_url, async (error, response, data) => {
             try {
                 $.log("data:"+data)
-                $.log("error:"+JSON.parse(error))
-                $.log("response:"+JSON.parse(response))
                 const result = JSON.parse(data)
-                if (result.resultCode === 0 && result.sessionInfo) {
-                    $.setdata(result.sessionInfo.userId, `xyjsquserId`)
-                    $.setdata(result.sessionInfo.accessToken, `xyjsqaccessToken`)
-                    $.setdata(result.sessionInfo.refreshToken, `xyjsqrefreshToken`)
-                    $.setdata(result.sessionInfo.sessionId, `xyjsqsessionId`)
-
-                    // sessionId = result.sessionInfo.sessionId
-                    // accessToken = result.sessionInfo.accessToken
-                    // userId = result.sessionInfo.userId
-                    // refreashToken = result.sessionInfo.refreshToken
-
-                    if (result.tokenInfo)
-                        $.setdata(result.tokenInfo.accelToken, `xyjsqaccelToken`)
-                } else {
-
-                    // $.log(result.message + "\n")
-                }
+                result.taskList.forEach(element => {
+                    $.log(element.taskName+"\n")
+                });
             } catch (e) {
                 $.logErr(e, response);
             } finally {
