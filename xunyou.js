@@ -189,12 +189,12 @@ function doTask(taskId, taskCheckValue) {
             body: `{"accumulativeValue": "","taskCheckValue": "${taskCheckValue}"}`
 
         }
-        $.log(JSON.stringify(tasklist_url))
+        // $.log(JSON.stringify(tasklist_url))
 
         $.post(tasklist_url, (error, response, data) => {
             try {
-                $.log("data:" + data)
-                $.log("error:" + error)
+                // $.log("data:" + data)
+                // $.log("error:" + error)
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
@@ -240,7 +240,7 @@ async function getCouponId() {
         }
         $.get(tasklist_url, async (error, response, data) => {
             try {
-                $.log("data:" + data)
+                // $.log("data:" + data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
                     for (const element of result.couponList) {
@@ -291,7 +291,7 @@ function doCoupon(key_couponId) {
         }
         $.post(tasklist_url, (error, response, data) => {
             try {
-                $.log("data:" + data)
+                // $.log("data:" + data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
                     $.log("兑换成功！！！！！")
