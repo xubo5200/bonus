@@ -125,7 +125,7 @@ function startTask() {
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
 
-                a:for (const element of result.taskList) {
+                for (const element of result.taskList) {
 
                     $.log(element.taskName + "\n")
 
@@ -136,7 +136,7 @@ function startTask() {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
-                                    break a;
+                                    return
                                     // await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     await doTask(element.taskId, '3')
