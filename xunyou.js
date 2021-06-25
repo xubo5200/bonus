@@ -185,7 +185,7 @@ function doTask(taskId, taskCheckValue) {
                 // 'Connection': 'Keep-Alive',
                 // 'Accept-Encoding': 'gzip'
             },
-            // body: `{"accumulativeValue": "","taskCheckValue": "${taskCheckValue}"}`
+            body: `{"accumulativeValue": "","taskCheckValue": "${taskCheckValue}"}`
 
         }
         $.log(JSON.stringify(tasklist_url))
