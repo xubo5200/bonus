@@ -105,7 +105,7 @@ function startTask() {
         const userId = $.getdata('xyjsquserId');
         const refreashToken = $.getdata('xyjsqrefreshToken');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks?client_version=5.2.10.4`,
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks?channel=ios`,
             headers: {
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ function doTask(taskId, taskCheckValue) {
         const userId = $.getdata('xyjsquserId');
         const refreashToken = $.getdata('xyjsqrefreshToken');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}`,
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}/?channel=ios`,
             headers: {
                 // 'Cache-Control': 'no-cache',
                 // 'Content-Type': 'application/json',
@@ -265,7 +265,7 @@ function doCoupon(key_couponId) {
         const accessToken = $.getdata('xyjsqaccessToken');
         const userId = $.getdata('xyjsquserId');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/apis/v1/android/users/${userId}/coupons/${key_couponId}?version=5.2.10.4`,
+            url: `https://api.xunyou.mobi/apis/v1/android/users/${userId}/coupons/${key_couponId}?channel_type=ios`,
             headers: {
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'application/json',
