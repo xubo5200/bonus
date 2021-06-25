@@ -172,7 +172,7 @@ function doTask(taskId, taskCheckValue) {
         const userId = $.getdata('xyjsquserId');
         const refreashToken = $.getdata('xyjsqrefreshToken');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}/?channel=ios`,
+            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/tasks/${taskId}?channel=ios`,
             headers: {
                 // 'Cache-Control': 'no-cache',
                 // 'Content-Type': 'application/json',
