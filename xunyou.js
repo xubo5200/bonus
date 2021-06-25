@@ -47,6 +47,8 @@ if (isGetCookie) {
     message = ''
     console.log(`\n开始【迅游加速器】`)
     await startTask()
+    $.log("开始兑换劵！！！！！！")
+    await getCouponId()
 
 })()
     .catch((e) => $.logErr(e))
@@ -113,7 +115,7 @@ function startTask() {
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
                 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
-                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'User-Agent': 'GameMaster/3 CFNetwork/1209 Darwin/20.2.0',
                 'Host': 'api.xunyou.mobi',
                 'Connection': 'Keep-Alive',
                 'Accept-Encoding': 'gzip'
@@ -125,7 +127,7 @@ function startTask() {
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
 
-                a:for (const element of result.taskList) {
+                a: for (const element of result.taskList) {
 
                     $.log(element.taskName + "\n")
 
@@ -135,11 +137,11 @@ function startTask() {
                             if (element.checkPoints) {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
-                                    $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
+                                    $.log("看视频　＋2天VIP,休息" + element.checkPoints['6'] / 1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     await doTask(element.taskId, '3')
-                                    $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
+                                    $.log("看视频　＋1天VIP,休息" + element.checkPoints['3'] / 1000 + "秒")  // 每项对应数值；
                                     await $.wait(element.checkPoints['3'])
                                 }
                                 // keys.map(key => {
@@ -150,12 +152,12 @@ function startTask() {
 
 
                 };
-    } catch (e) {
-        $.logErr(e, response);
-    } finally {
-        resolve();
-    }
-})
+            } catch (e) {
+                $.logErr(e, response);
+            } finally {
+                resolve();
+            }
+        })
     })
 }
 function doTask(taskId, taskCheckValue) {
@@ -179,7 +181,7 @@ function doTask(taskId, taskCheckValue) {
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
                 // 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
-                // 'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                // 'User-Agent': 'GameMaster/3 CFNetwork/1209 Darwin/20.2.0',
                 // 'Host': 'api.xunyou.mobi',
                 // 'Connection': 'Keep-Alive',
                 // 'Accept-Encoding': 'gzip'
@@ -191,8 +193,8 @@ function doTask(taskId, taskCheckValue) {
 
         $.post(tasklist_url, (error, response, data) => {
             try {
-                $.log("data:"+data)
-                $.log("error:"+error)
+                $.log("data:" + data)
+                $.log("error:" + error)
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
@@ -200,7 +202,6 @@ function doTask(taskId, taskCheckValue) {
                         doCoupon(result.taskProgress[0].paraList.key_couponId)
                     }
                 } else {
-                    getCouponId()
                     $.log("错误信息：" + result.errorInfo)
                 }
             } catch (e) {
@@ -211,8 +212,8 @@ function doTask(taskId, taskCheckValue) {
         })
     })
 }
-function getCouponId() {
-    return new Promise((resolve) => {
+async function getCouponId() {
+    return new Promise(async (resolve) => {
         let time = new Date().getTime();
         let created = getCreated(time)
         let secend = Math.floor(time / 1000)
@@ -222,7 +223,7 @@ function getCouponId() {
         const accessToken = $.getdata('xyjsqaccessToken');
         const userId = $.getdata('xyjsquserId');
         let tasklist_url = {
-            url: `https://api.xunyou.mobi/api/v2/android/users/${userId}/history/coupons?before=${time}&n=200`,
+            url: `https://api.xunyou.mobi/api/v2/android/coupons?channel_type=ios`,
             headers: {
                 'Cache-Control': 'no-cache',
                 'Content-Type': 'application/json',
@@ -230,7 +231,7 @@ function getCouponId() {
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
                 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
-                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'User-Agent': 'GameMaster/3 CFNetwork/1209 Darwin/20.2.0',
                 'Host': 'api.xunyou.mobi',
                 'Connection': 'Keep-Alive',
                 'Accept-Encoding': 'gzip'
@@ -239,10 +240,14 @@ function getCouponId() {
         }
         $.get(tasklist_url, (error, response, data) => {
             try {
-                $.log("data:"+data)
+                $.log("data:" + data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
-                    $.log("获取成功！！！！！")
+                    for (const element of result.couponList) {
+                        doCoupon(element.couponId)
+                        $.log("兑换成功,休息30秒")  // 每项对应数值；
+                        await $.wait(30000)
+                    };
                 } else {
                     $.log("错误信息：" + result.errorInfo)
                 }
@@ -273,7 +278,7 @@ function doCoupon(key_couponId) {
                 'X-WSSE': `UsernameToken Username="Game", PasswordDigest="${passwordDigest}", Nonce="${nonce}", Created="${created}"`,
                 'userId': `${userId}`,
                 'accessToken': `${accessToken}`,
-                'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 9.1.0; HUAWEI Build/R16AA.BVCNKSU1ARC7)',
+                'User-Agent': 'GameMaster/3 CFNetwork/1209 Darwin/20.2.0',
                 'Host': 'api.xunyou.mobi',
                 'Connection': 'Keep-Alive',
                 'Accept-Encoding': 'gzip'
@@ -286,7 +291,7 @@ function doCoupon(key_couponId) {
         }
         $.post(tasklist_url, (error, response, data) => {
             try {
-                $.log("data:"+data)
+                $.log("data:" + data)
                 const result = JSON.parse(data)
                 if (result.resultCode === 0) {
                     $.log("兑换成功！！！！！")
