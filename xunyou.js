@@ -238,7 +238,7 @@ async function getCouponId() {
             },
 
         }
-        $.get(tasklist_url, (error, response, data) => {
+        $.get(tasklist_url, async (error, response, data) => {
             try {
                 $.log("data:" + data)
                 const result = JSON.parse(data)
