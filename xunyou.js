@@ -125,7 +125,7 @@ function startTask() {
                 // $.log("data:"+data)
                 const result = JSON.parse(data)
 
-                for (const element of result.taskList) {
+                a:for (const element of result.taskList) {
 
                     $.log(element.taskName + "\n")
 
@@ -136,11 +136,12 @@ function startTask() {
                                 if (element.checkPoints['6']) {
                                     await doTask(element.taskId, '6')
                                     $.log("看视频　＋2天VIP,休息" + element.checkPoints['6']/1000 + "秒")  // 每项对应数值；
-                                    await $.wait(element.checkPoints['6'])
+                                    break a;
+                                    // await $.wait(element.checkPoints['6'])
                                 } else if (element.checkPoints['3']) {
                                     await doTask(element.taskId, '3')
                                     $.log("看视频　＋1天VIP,休息" + element.checkPoints['3']/1000 + "秒")  // 每项对应数值；
-                                    await $.wait(element.checkPoints['3'])
+                                    // await $.wait(element.checkPoints['3'])
                                 }
                                 // keys.map(key => {
                                 // })
@@ -184,7 +185,7 @@ function doTask(taskId, taskCheckValue) {
                 // 'Connection': 'Keep-Alive',
                 // 'Accept-Encoding': 'gzip'
             },
-            body: `{"taskCheckValue": "${taskCheckValue}"}`
+            body: `{"accumulativeValue": "","taskCheckValue": "${taskCheckValue}"}`
 
         }
         $.log(JSON.stringify(tasklist_url))
