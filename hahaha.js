@@ -25,12 +25,12 @@ let i = 0;
 var num = 10;//重放次数控制
 let logs = 1;
 let isGetCookie = typeof $request !== 'undefined'
-var url1 = $.getDate("url1")
-var url2 = $.getDate("url2")
-var videoHeader = $.getDate("videoHeader")
-var videoBody = $.getDate("videoBody")
-var goldHeader = $.getDate("goldHeader")
-var goldBody = $.getDate("goldBody")
+var url1 = $.getdata("url1")
+var url2 = $.getdata("url2")
+var videoHeader = $.getdata("videoHeader")
+// var videoBody = $.getdata("videoBody")
+var goldHeader = $.getdata("goldHeader")
+// var goldBody = $.getdata("goldBody")
 if (isGetCookie) {
     GetCookie();
     $.done()
