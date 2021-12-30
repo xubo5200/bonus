@@ -19,8 +19,8 @@ hostname = bp-api.shinet.cn
 */
 
 
-const zhiyi = '重放N次'
-const $ = Env(zhiyi)
+const magger = '重放N次'
+const $ = Env(magger)
 let i = 0;
 var num = 10;//重放次数控制
 let logs = 1;
@@ -37,8 +37,8 @@ if (isGetCookie) {
 }
 !(async () => {
     do {
-        await collectzhiyi()
-        await collectzhiyi1()
+        await collectmagger()
+        await collectmagger1()
         console.log("本次延时" + (Math.round(Math.random() * (40000 - 30000) + 30000)) / 1000 + "s\n")
         await $.wait(Math.round(Math.random() * (40000 - 30000) + 30000))        //延时30-40s  对应30000-40000，修改数字就可以，本次不建议修改
         i++
@@ -104,7 +104,7 @@ function randomString(randomLen, min, max) {
 }
 
 
-async function collectzhiyi() {
+async function collectmagger() {
     return new Promise((resolve) => {
         let collect1_url = {
             url: url1,
@@ -124,7 +124,7 @@ async function collectzhiyi() {
     })
 }
 
-async function collectzhiyi1() {
+async function collectmagger1() {
     return new Promise((resolve) => {
         let collect_url = {
             url: url2,
@@ -136,7 +136,7 @@ async function collectzhiyi1() {
                 if (logs) $.log(data)
                 const result = JSON.parse(data)
                 if (result.code == 0)
-                    $.log("\nzhiyi红包领取成功:+" + result.result.gold + "\n")
+                    $.log("\nmagger红包领取成功:+" + result.result.gold + "\n")
                 else
                     $.log(result.message + "\n")
                 resolve()
