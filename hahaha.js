@@ -6,11 +6,11 @@ https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 圈X配置如下，其他软件自行测试
 
 [task_local]
-#快乐餐厅(自己改五分钟一次)
+#我的幸福生活(自己改五分钟一次)
 0 0 0 0 0 https://gitee.com/xubo5200/bonus/raw/master/hahaha.js, tag=我的幸福生活, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
 
 [rewrite_local]
-#快乐餐厅
+#我的幸福生活
 https://bp-api.shinet.cn/shua-xfsh2/look/ad/video url script-request-header https://gitee.com/xubo5200/bonus/raw/master/hahaha.js
 https://bp-api.shinet.cn/shua-xfsh2/add/gold url script-request-header https://gitee.com/xubo5200/bonus/raw/master/hahaha.js
 hostname = bp-api.shinet.cn
