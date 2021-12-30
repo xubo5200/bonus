@@ -22,7 +22,7 @@ hostname = bp-api.shinet.cn
 const magger = '重放N次'
 const $ = Env(magger)
 let i = 0;
-var num = 10;//重放次数控制
+var num = 1;//重放次数控制
 let logs = 1;
 let isGetCookie = typeof $request !== 'undefined'
 // var url1 = "https://bp-api.shinet.cn/shua-xfsh2/look/ad/video?accessKey=94ae7461dec8e07da827b792cc1c55b7_483895188&anomy=0&appId=517&appVersion=1.0.1&brand=Apple&bs=CDMA&channel=AppStore&deviceId=0000-0000-0000-0000&env=production&gps=default&idfa=0000-0000-0000-0000&isPass=1&os=iOS&osVersion=iOS15.100000&pkgId=358&position=%E5%9C%B0%E5%9D%97%E5%85%A8%E4%BD%93%E5%8A%A0%E9%80%9F&product=wodexingfushenghuo2&romVersion=iOS15.100000&sign=KyyC1NWUMW7MuSWl0V0hA3h9Pe0QbkirFYGCejwwoiDA44x0kj11EX/HMhNiyP1UpPVZKNz4I9ZXyNJs8Sa2BQ%3D%3D&userId=483895188&version=1.0.1"
@@ -45,7 +45,7 @@ if (isGetCookie) {
         await collectmagger()
         await collectmagger1()
         console.log("本次延时" + (Math.round(Math.random() * (40000 - 30000) + 30000)) / 1000 + "s\n")
-        await $.wait(Math.round(Math.random() * (40000 - 30000) + 30000))        //延时30-40s  对应30000-40000，修改数字就可以，本次不建议修改
+        // await $.wait(Math.round(Math.random() * (40000 - 30000) + 30000))        //延时30-40s  对应30000-40000，修改数字就可以，本次不建议修改
         i++
     } while (i < num)
 
@@ -116,6 +116,7 @@ async function collectmagger() {
             headers: videoHeader,
 
         }
+        $.log(collect1_url)
         $.get(collect1_url, async (error, response, data) => {
             try {
                 $.log(data)
