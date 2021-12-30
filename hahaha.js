@@ -25,12 +25,17 @@ let i = 0;
 var num = 10;//重放次数控制
 let logs = 1;
 let isGetCookie = typeof $request !== 'undefined'
-var url1 = $.getdata("url1")
-var url2 = $.getdata("url2")
-var videoHeader = $.getdata("videoHeader")
-// var videoBody = $.getdata("videoBody")
-var goldHeader = $.getdata("goldHeader")
-// var goldBody = $.getdata("goldBody")
+var url1 = "https://bp-api.shinet.cn/shua-xfsh2/look/ad/video?accessKey=94ae7461dec8e07da827b792cc1c55b7_483895188&anomy=0&appId=517&appVersion=1.0.1&brand=Apple&bs=CDMA&channel=AppStore&deviceId=0000-0000-0000-0000&env=production&gps=default&idfa=0000-0000-0000-0000&isPass=1&os=iOS&osVersion=iOS15.100000&pkgId=358&position=%E5%9C%B0%E5%9D%97%E5%85%A8%E4%BD%93%E5%8A%A0%E9%80%9F&product=wodexingfushenghuo2&romVersion=iOS15.100000&sign=KyyC1NWUMW7MuSWl0V0hA3h9Pe0QbkirFYGCejwwoiDA44x0kj11EX/HMhNiyP1UpPVZKNz4I9ZXyNJs8Sa2BQ%3D%3D&userId=483895188&version=1.0.1"
+var url2 = "https://bp-api.shinet.cn/shua-xfsh2/add/gold?position=26"
+var videoHeader = {"bs":"CDMA","userId":"483895188","pkgId":"358","Host":"bp-api.shinet.cn","osVersion":"iOS15.100000","deviceId":"0000-0000-0000-0000","Accept-Encoding":"gzip, deflate, br","gps":"default","brand":"Apple","channel":"AppStore","Connection":"keep-alive","accessKey":"94ae7461dec8e07da827b792cc1c55b7_483895188","appVersion":"1.0.1","anomy":"0","Accept-Language":"zh-Hans-CN;q=1, en-CN;q=0.9","version":"1.0.1","User-Agent":"wdxfsh-mobile/1.0.1 (iPhone; iOS 15.1.1; Scale/3.00)","os":"iOS","isPass":"1","romVersion":"iOS15.100000","sign":"COgoueXJB1xlJq3XHdVN2CyHr3DJeOebKkk2NDC2Qi+lsI7UX0iTj3BMtFcR9ug20TiFinulbMuf21/4SLE2zw==","Accept":"*/*","env":"production","appId":"517","product":"wodexingfushenghuo2","idfa":"0000-0000-0000-0000"}
+var goldHeader = {"bs":"CDMA","osVersion":"iOS15.100000","pkgId":"358","Host":"bp-api.shinet.cn","Accept-Encoding":"gzip, deflate, br","deviceId":"0000-0000-0000-0000","brand":"Apple","channel":"AppStore","Connection":"keep-alive","Cache-Control":"no-cache","accessKey":"94ae7461dec8e07da827b792cc1c55b7_483895188","appVersion":"1.0.1","Accept-Language":"zh-cn","User-Agent":"wdxfsh-mobile/1.0 CFNetwork/1325.0.1 Darwin/21.1.0","os":"iOS","romVersion":"iOS15.100000","sign":"PzEZA7lfGWejodih2QKGrUKWJsPvnELTNF7wqAFcEcShaeKbxMSLsrPXo86c0j4f5VzpSrdsUR/8w/zAA75BDQ==","mac":"","oaid":"","Accept":"*/*","androidId":"","blackBox":"","gps":"default"}
+
+// var url1 = $.getdata("url1")
+// var url2 = $.getdata("url2")
+// var videoHeader = $.getdata("videoHeader")
+// var goldHeader = $.getdata("goldHeader")
+
+
 if (isGetCookie) {
     GetCookie();
     $.done()
@@ -114,7 +119,7 @@ async function collectmagger() {
         $.get(collect1_url, async (error, response, data) => {
             try {
                 $.log(data)
-                const result = JSON.parse(data)
+                // const result = JSON.parse(data)
             } catch (e) {
                 $.logErr(e, response);
             } finally {
@@ -134,9 +139,9 @@ async function collectmagger1() {
         $.get(collect_url, async (error, response, data) => {
             try {
                 if (logs) $.log(data)
-                const result = JSON.parse(data)
-                if (result.code == 0)
-                    $.log("\nmagger红包领取成功:+" + result.result.gold + "\n")
+                // const result = JSON.parse(data)
+                // if (result.code == 0)
+                    // $.log("\nmagger红包领取成功:+" + result.result.gold + "\n")
                 else
                     $.log(result.message + "\n")
                 resolve()
