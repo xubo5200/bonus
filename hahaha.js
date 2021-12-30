@@ -112,8 +112,8 @@ function randomString(randomLen, min, max) {
 async function collectmagger() {
     return new Promise((resolve) => {
         let collect1_url = {
-            url: url1,
-            headers: videoHeader,
+            url: $.getdata("url1"),
+            headers: $.getdata("videoHeader"),
 
         }
         $.get(collect1_url, async (error, response, data) => {
@@ -132,8 +132,8 @@ async function collectmagger() {
 async function collectmagger1() {
     return new Promise((resolve) => {
         let collect_url = {
-            url: url2,
-            headers: goldHeader
+            url: $.getdata("url2"),
+            headers: $.getdata("goldHeader"),
 
         }
         $.get(collect_url, async (error, response, data) => {
