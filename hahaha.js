@@ -116,7 +116,7 @@ async function collectmagger() {
             headers: JSON.parse(videoHeader),
 
         }
-        $.log(JSON.stringify(collect1_url))
+        // $.log(JSON.stringify(collect1_url))
         $.get(collect1_url, async (error, response, data) => {
             try {
                 $.log(data)
