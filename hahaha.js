@@ -140,9 +140,9 @@ async function collectmagger1() {
         $.get(collect_url, async (error, response, data) => {
             try {
                 if (logs) $.log(data)
-                // const result = JSON.parse(data)
-                // if (result.code == 0)
-                    // $.log("\nmagger红包领取成功:+" + result.result.gold + "\n")
+                const result = JSON.parse(data)
+                if (result.code == 0)
+                    $.log("\nmagger红包领取成功:+" + result.result.gold + "\n")
                 else
                     $.log(result.message + "\n")
                 resolve()
