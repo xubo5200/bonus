@@ -10,8 +10,8 @@
 
 const $ = new Env("中青看点阅读")
 //const notify = $.isNode() ? require('./sendNotify') : '';
-let ReadArr, ReadArr2, ReadArr3, ReadArr4 = [], timebodyVal = "";
-let YouthBody, YouthBody2, YouthBody3, YouthBody4 = $.getdata('youth_autoread') || $.getdata("zqgetbody_body");
+let ReadArr= [], ReadArr2= [], ReadArr3= [], ReadArr4 = [], timebodyVal = "";
+let YouthBody, YouthBodys2, YouthBodys3, YouthBodys4 = $.getdata('youth_autoread') || $.getdata("zqgetbody_body");
 let smallzq = $.getdata('youth_cut');
 let indexLast = $.getdata('zqbody_index');
 let artsnum = 0, videosnum = 0;
@@ -34,15 +34,6 @@ if (!$.isNode() && !YouthBody == true) {
     if ($.isNode()) {
         if (process.env.YOUTH_READ && process.env.YOUTH_READ.indexOf('&') > -1) {
             YouthBodys = process.env.YOUTH_READ.split('&');
-            // if (process.env.YOUTH_READ2 && process.env.YOUTH_READ2.indexOf('&') > -1) {
-            //     YouthBodys2 = process.env.YOUTH_READ2.split('&');
-            // }
-            // if (process.env.YOUTH_READ3 && process.env.YOUTH_READ3.indexOf('&') > -1) {
-            //     YouthBodys3 = process.env.YOUTH_READ3.split('&');
-            // }
-            // if (process.env.YOUTH_READ4 && process.env.YOUTH_READ4.indexOf('&') > -1) {
-            //     YouthBodys4 = process.env.YOUTH_READ4.split('&');
-            // }
             console.log(`您选择的是用"&"隔开\n`)
         } else if (process.env.YOUTH_READ && process.env.YOUTH_READ.indexOf('\n') > -1) {
             YouthBodys = process.env.YOUTH_READ.split('\n');
@@ -50,6 +41,16 @@ if (!$.isNode() && !YouthBody == true) {
         } else {
             YouthBodys = [process.env.YOUTH_READ]
         }
+        if (process.env.YOUTH_READ2 && process.env.YOUTH_READ2.indexOf('&') > -1) {
+            YouthBodys2 = process.env.YOUTH_READ2.split('&');
+        }
+        if (process.env.YOUTH_READ3 && process.env.YOUTH_READ3.indexOf('&') > -1) {
+            YouthBodys3 = process.env.YOUTH_READ3.split('&');
+        }
+        if (process.env.YOUTH_READ4 && process.env.YOUTH_READ4.indexOf('&') > -1) {
+            YouthBodys4 = process.env.YOUTH_READ4.split('&');
+        }
+
     } else if (!$.isNode() && YouthBody.indexOf("&") > -1) {
         YouthBodys = YouthBody.split("&")
     };
@@ -58,21 +59,21 @@ if (!$.isNode() && !YouthBody == true) {
             ReadArr.push(YouthBodys[item])
         }
     })
-    // Object.keys(YouthBodys2).forEach((item) => {
-    //     if (YouthBodys2[item]) {
-    //         ReadArr2.push(YouthBodys2[item])
-    //     }
-    // })
-    // Object.keys(YouthBodys3).forEach((item) => {
-    //     if (YouthBodys3[item]) {
-    //         ReadArr3.push(YouthBodys3[item])
-    //     }
-    // })
-    // Object.keys(YouthBodys4).forEach((item) => {
-    //     if (YouthBodys4[item]) {
-    //         ReadArr4.push(YouthBodys4[item])
-    //     }
-    // })
+    Object.keys(YouthBodys2).forEach((item) => {
+        if (YouthBodys2[item]) {
+            ReadArr2.push(YouthBodys2[item])
+        }
+    })
+    Object.keys(YouthBodys3).forEach((item) => {
+        if (YouthBodys3[item]) {
+            ReadArr3.push(YouthBodys3[item])
+        }
+    })
+    Object.keys(YouthBodys4).forEach((item) => {
+        if (YouthBodys4[item]) {
+            ReadArr4.push(YouthBodys4[item])
+        }
+    })
 }
 timeZone = new Date().getTimezoneOffset() / 60;
 timestamp = Date.now() + (8 + timeZone) * 60 * 60 * 1000;
@@ -113,30 +114,30 @@ $.log("******** 您共获取" + (ReadArr.length + ReadArr2.length + ReadArr3.len
             await bodyInfo();
         }
     };
-    // for (var i = 0; i < ReadArr2.length; i++) {
-    //     if (ReadArr2[i]) {
-    //         articlebody = ReadArr2[i];
-    //         $.index = $.index + 1;
-    //         $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
-    //         await bodyInfo();
-    //     }
-    // };
-    // for (var i = 0; i < ReadArr3.length; i++) {
-    //     if (ReadArr3[i]) {
-    //         articlebody = ReadArr3[i];
-    //         $.index = $.index + 1;
-    //         $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
-    //         await bodyInfo();
-    //     }
-    // };
-    // for (var i = 0; i < ReadArr4.length; i++) {
-    //     if (ReadArr4[i]) {
-    //         articlebody = ReadArr4[i];
-    //         $.index = $.index + 1;
-    //         $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
-    //         await bodyInfo();
-    //     }
-    // };
+    for (var i = 0; i < ReadArr2.length; i++) {
+        if (ReadArr2[i]) {
+            articlebody = ReadArr2[i];
+            $.index = $.index + 1;
+            $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
+            await bodyInfo();
+        }
+    };
+    for (var i = 0; i < ReadArr3.length; i++) {
+        if (ReadArr3[i]) {
+            articlebody = ReadArr3[i];
+            $.index = $.index + 1;
+            $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
+            await bodyInfo();
+        }
+    };
+    for (var i = 0; i < ReadArr4.length; i++) {
+        if (ReadArr4[i]) {
+            articlebody = ReadArr4[i];
+            $.index = $.index + 1;
+            $.log(`-------------------------\n开始中青看点第${$.index}次阅读\n`);
+            await bodyInfo();
+        }
+    };
     $.log("\n……………………………………………………………………\n\n本次共删除" + delbody + "个请求，剩余" + (ReadArr.length - delbody) + "个请求");
     $.log("本次共阅读" + artsnum + "次资讯，共获得" + readscore + "青豆\n观看" + videosnum + "次视频，获得" + videoscore + "青豆(不含0青豆次数)\n");
     console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，共计获得${readscore + videoscore}个青豆，阅读请求全部结束`);
