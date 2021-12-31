@@ -113,8 +113,8 @@ async function collectmagger() {
     return new Promise((resolve) => {
         let collect1_url = {
             url: url1,
-            // headers: JSON.parse(videoHeader),
-            headers: videoHeader,
+            headers: JSON.parse(videoHeader),
+            // headers: videoHeader,
 
         }
         // $.log(JSON.stringify(collect1_url))
@@ -135,8 +135,8 @@ async function collectmagger1() {
     return new Promise((resolve) => {
         let collect_url = {
             url: url2,
-            // headers: JSON.parse(goldHeader)
-            headers: goldHeader
+            headers: JSON.parse(goldHeader)
+            // headers: goldHeader
 
         }
         $.get(collect_url, async (error, response, data) => {
