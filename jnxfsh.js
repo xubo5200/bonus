@@ -6,13 +6,13 @@ https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 圈X配置如下，其他软件自行测试
 
 [task_local]
-#我的幸福生活(自己改五分钟一次)
-0 0 0 0 0 https://gitee.com/xubo5200/bonus/raw/master/hahaha.js, tag=我的幸福生活, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
+#江南幸福生活(自己改五分钟一次)
+0 0 0 0 0 https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js, tag=江南幸福生活, img-url=https://ae01.alicdn.com/kf/Uc2775b8f4abf41788ba89df0317e58050.jpg, enabled=true
 
 [rewrite_local]
-#我的幸福生活
-https://bp-api.shinet.cn/shua-xfsh2/look/ad/video url script-request-header https://gitee.com/xubo5200/bonus/raw/master/hahaha.js
-https://bp-api.shinet.cn/shua-xfsh2/add/gold url script-request-header https://gitee.com/xubo5200/bonus/raw/master/hahaha.js
+#江南幸福生活
+https://bp-api.shinet.cn/shua-gangnamstyle/look/ad/video url script-request-header https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js
+https://bp-api.shinet.cn/shua-gangnamstyle/add/gold url script-request-header https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js
 hostname = bp-api.shinet.cn
 
 
@@ -25,15 +25,15 @@ let i = 0;
 var num = 30;//重放次数控制
 let logs = 1;
 let isGetCookie = typeof $request !== 'undefined'
-var url1 = "https://bp-api.shinet.cn/shua-xfsh2/look/ad/video?accessKey=94ae7461dec8e07da827b792cc1c55b7_483895188&anomy=0&appId=517&appVersion=1.0.1&brand=Apple&bs=CDMA&channel=AppStore&deviceId=0000-0000-0000-0000&env=production&gps=default&idfa=0000-0000-0000-0000&isPass=1&os=iOS&osVersion=iOS15.100000&pkgId=358&position=%E8%A7%A3%E9%94%81%E5%9C%B0%E5%9D%97&product=wodexingfushenghuo2&romVersion=iOS15.100000&sign=aWGjCNq6zf9xjrq//M4qy85LdnS09xmradiKpI556rUF/xOILy9gu2Fvu5DMx2VAkWcn21XiNgjqzu39h1NuVg%3D%3D&userId=483895188&version=1.0.1"
-var url2 = "https://bp-api.shinet.cn/shua-xfsh2/add/gold?position=25"
-var videoHeader = {"bs":"CDMA","userId":"483895188","pkgId":"358","Host":"bp-api.shinet.cn","osVersion":"iOS15.100000","deviceId":"0000-0000-0000-0000","Accept-Encoding":"gzip, deflate, br","gps":"default","brand":"Apple","channel":"AppStore","Connection":"keep-alive","accessKey":"94ae7461dec8e07da827b792cc1c55b7_483895188","appVersion":"1.0.1","anomy":"0","Accept-Language":"zh-Hans-CN;q=1, en-CN;q=0.9","version":"1.0.1","User-Agent":"wdxfsh-mobile/1.0.1 (iPhone; iOS 15.1.1; Scale/3.00)","os":"iOS","isPass":"1","romVersion":"iOS15.100000","sign":"ddtNtEkfGyTnqZ7TFJdyDgsLSFHNOX0XCxLBgg1PRD+c0NTaLAOUOxlitT5sFplCDk/UHUP1AjTbtA1ba7BgtA==","Accept":"*/*","env":"production","appId":"517","product":"wodexingfushenghuo2","idfa":"0000-0000-0000-0000"}
-var goldHeader = {"bs":"CDMA","osVersion":"iOS15.100000","pkgId":"358","Host":"bp-api.shinet.cn","Accept-Encoding":"gzip, deflate, br","deviceId":"0000-0000-0000-0000","brand":"Apple","channel":"AppStore","Connection":"keep-alive","Cache-Control":"no-cache","accessKey":"94ae7461dec8e07da827b792cc1c55b7_483895188","appVersion":"1.0.1","Accept-Language":"zh-cn","User-Agent":"wdxfsh-mobile/1.0 CFNetwork/1325.0.1 Darwin/21.1.0","os":"iOS","romVersion":"iOS15.100000","sign":"e2UE0FxuW/p/mxWFLxlCdxwqylhKeiTgW7HsD5Os/MsBl/1yCCztZ5oqWdKfZLLbwJgklq/dXfTH5Q4V/Hr1TQ==","mac":"","oaid":"","Accept":"*/*","androidId":"","blackBox":"eyJ0b2tlbklkIjoiY2JTNm9WaTZkQUdkUE5YUFJaRjh4WjZTWkR2a2JIS2pmVHFMYnVscXhGdndcLzZlekVsbVFNVCtQY1d6b3lZUlgzN0dkZDU3cVRBSlhrSllibXlwN0ZRPT0iLCJvcyI6ImlPUyIsInNlcUlkIjoiMTY0MDU5NDk4NDQ4Nzc2ODA2NSIsInByb2ZpbGVUaW1lIjoyNTUsInZlcnNpb24iOiIzLjUuNSJ9","gps":"default"}
+var url1 = "https://bp-api.shinet.cn/shua-gangnamstyle/look/ad/video?accessKey=d767ffad41530d90765af24643e91276_224188687&anomy=0&appId=507&appVersion=1.0.4&brand=Apple&bs=CDMA&channel=AppStore&deviceId=0000-0000-0000-0000&env=production&gps=default&isPass=1&os=iOS&osVersion=iOS15.100000&pkgId=350&romVersion=iOS15.100000&sign=b4S6WOEUeCeHnNMUi2WcbLux9yFOb28Zx9QGyLAQ5yfnX5ylrM155p6UneXSUmqUIippY3XcO0Gpn7mWEiPObQ%3D%3D&userId=224188687&version=1.0.4"
+var url2 = "https://bp-api.shinet.cn/shua-gangnamstyle/add/gold?position=28"
+var videoHeader = {"userId":"224188687","appId":"507","User-Agent":"jnxfsh-mobile/1.0.4 (iPhone; iOS 15.1.1; Scale/3.00)","bs":"CDMA","brand":"Apple","channel":"AppStore","appVersion":"1.0.4","isPass":"1","romVersion":"iOS15.100000","anomy":"0","version":"1.0.4","os":"iOS","pkgId":"350","accessKey":"d767ffad41530d90765af24643e91276_224188687","deviceId":"0000-0000-0000-0000","sign":"Ncu4N7sTOmXn1LCZnUaVlBDH4/AW1fLY8VQNg/kKJ0yHkWJtCTJHl2lXinoKUE5q8s3QZiAY+eg7LxO8UD9fpg==","Connection":"keep-alive","Accept-Language":"zh-Hans-CN;q=1, en-CN;q=0.9","env":"production","osVersion":"iOS15.100000","Accept":"*/*","Accept-Encoding":"gzip, deflate, br","gps":"default"}
+var goldHeader = {"Cache-Control":"no-cache","User-Agent":"jnxfsh-mobile/1.0 CFNetwork/1325.0.1 Darwin/21.1.0","bs":"CDMA","brand":"Apple","channel":"AppStore","appVersion":"1.0.4","pkgId":"350","romVersion":"iOS15.100000","os":"iOS","accessKey":"d767ffad41530d90765af24643e91276_224188687","deviceId":"0000-0000-0000-0000","sign":"hOSqy2bFEOIJU1Hia42FlaV2rbZJiRE7vczP640xTJx5ebLlaP3ayxzbAP83Z4ksPCRGfgVBqlE2k9b/Nbj40g==","mac":"default","targetApi":"0","oaid":"383d6d5f-ca05-10d9-69dd-abfff4df5617","Accept-Language":"zh-cn","Connection":"keep-alive","osVersion":"iOS15.100000","Accept":"*/*","Accept-Encoding":"gzip, deflate, br","gps":"default"}
 
-// var url1 = $.getdata('url1')
-// var url2 = $.getdata('url2')
-// var videoHeader = $.getdata('videoHeader')
-// var goldHeader = $.getdata('goldHeader')
+var url1 = $.getdata('url1')
+var url2 = $.getdata('url2')
+var videoHeader = $.getdata('videoHeader')
+var goldHeader = $.getdata('goldHeader')
 
 
 if (isGetCookie) {
