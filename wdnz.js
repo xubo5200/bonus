@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/xubo5200/bonus/master/magger.box.json
 [rewrite_local]
 #江南幸福生活
 https://bp-api.shinet.cn/shua-gangnamstyle/look/ad/video url script-request-header https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js
-https://bp-api.shinet.cn/shua-gangnamstyle/add/gold url script-request-header https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js
+https://bp-api.shinet.cn/shua-gangnamstZAAA QA  aq` `   ``       yle/add/gold url script-request-header https://gitee.com/xubo5200/bonus/raw/master/jnxfsh.js
 hostname = bp-api.shinet.cn
 
 
@@ -44,7 +44,7 @@ if (isGetCookie) {
     do {
         await collectmagger()
         await collectmagger1()
-        console.log("本次延时" + (Math.round(Math.random() * (40000 - 30000) + 30000)) / 1000 + "s\n")` `
+        console.log("本次延时" + (Math.round(Math.random() * (40000 - 30000) + 30000)) / 1000 + "s\n")
         await $.wait(Math.round(Math.random() * (40000 - 30000) + 30000))        //延时30-40s  对应30000-40000，修改数字就可以，本次不建议修改
         i++
     } while (i < num)
@@ -54,8 +54,7 @@ if (isGetCookie) {
     .finally(() => $.done())
 
 
-            3323454343e3ee32w3w12w3er4t56y7865432wde3fr4gt5hy6ju7ik8lo0p;-/['']
-}{"?.,nbtrvc"}
+
 function GetCookie() {
     if ($request && $request.url.indexOf("/look/ad/video") >= 0) {
         const videoHeader = JSON.stringify($request.headers)
