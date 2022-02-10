@@ -17,3 +17,5 @@ if (obj.code == 200) {
         }
     });
 }
+body = JSON.stringify(obj);
+$done(body);
