@@ -49,7 +49,7 @@ obj={
 			{
 				"Amount" : 1500,
 				"OrderRecord" : "4",
-				"RightsID" : "10",
+				"RightsID" : "50",
 				"IsIntellegent" : false,
 				"Minutes" : 300,
 				"AllowanceAmount" : 420,
