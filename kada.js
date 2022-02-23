@@ -80,18 +80,18 @@ obj={
 			  "RuleShowType" : 0
 			},
 			{
-			  "Amount" : 1500,
-			  "OrderRecord" : "4",
+			  "Amount" : 0,
+			  "OrderRecord" : "1",
 			  "RightsID" : "50",
 			  "IsIntellegent" : false,
-			  "Minutes" : 300,
+			  "Minutes" : 60,
 			  "AllowanceAmount" : 420,
 			  "RightsName" : "50积分抵扣5小时",
-			  "RightsType" : 1,
+			  "RightsType" : 2,
 			  "RuleShowType" : 0
 			},
 			{
-			  "Amount" : 1000,
+			  "Amount" : 0,
 			  "OrderRecord" : "2",
 			  "RightsID" : "11",
 			  "IsIntellegent" : false,
