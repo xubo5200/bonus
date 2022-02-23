@@ -46,17 +46,7 @@ obj={
 		  "IsZeroLimit" : false,
 		  "ZeroType" : 0,
 		  "RightsList" : [
-			{
-				"Amount" : 1500,
-				"OrderRecord" : "4",
-				"RightsID" : "50",
-				"IsIntellegent" : false,
-				"Minutes" : 300,
-				"AllowanceAmount" : 420,
-				"RightsName" : "10积分抵扣1小时1",
-				"RightsType" : 2,
-				"RuleShowType" : 0
-			  },
+			
 		  ],
 		  "ListTips" : "无停车券可用",
 		  "NeedMany" : 1,
@@ -92,11 +82,11 @@ obj={
 			{
 			  "Amount" : 1500,
 			  "OrderRecord" : "4",
-			  "RightsID" : "10",
+			  "RightsID" : "50",
 			  "IsIntellegent" : false,
 			  "Minutes" : 300,
 			  "AllowanceAmount" : 420,
-			  "RightsName" : "10积分抵扣1小时1",
+			  "RightsName" : "50积分抵扣5小时",
 			  "RightsType" : 1,
 			  "RuleShowType" : 0
 			},
