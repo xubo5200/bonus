@@ -81,8 +81,19 @@ obj={
 			},
 			{
 			  "Amount" : 1000,
+			  "OrderRecord" : "4",
+			  "RightsID" : "10",
+			  "IsIntellegent" : false,
+			  "Minutes" : 420,
+			  "AllowanceAmount" : 420,
+			  "RightsName" : "10积分抵扣1小时1",
+			  "RightsType" : 2,
+			  "RuleShowType" : 0
+			},
+			{
+			  "Amount" : 1000,
 			  "OrderRecord" : "2",
-			  "RightsID" : "1",
+			  "RightsID" : "11",
 			  "IsIntellegent" : false,
 			  "Minutes" : 60,
 			  "AllowanceAmount" : 0,
