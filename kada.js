@@ -67,7 +67,7 @@ obj={
 		  "PanelTips" : "每日可使用1张停车券",
 		  "IntellegentType" : 3,
 		  "SelectedMaxCount" : 1,
-		  "Status" : false,
+		  "Status" : true,
 		  "IsShow" : true,
 		  "ZeroParams" : "",
 		  "IsIntellegent" : false,
