@@ -73,7 +73,7 @@ obj={
 			  "OrderRecord" : "4",
 			  "RightsID" : "10",
 			  "IsIntellegent" : false,
-			  "Minutes" : 300,
+			  "Minutes" : 500,
 			  "AllowanceAmount" : 0,
 			  "RightsName" : "10积分抵扣1小时",
 			  "RightsType" : 1,
