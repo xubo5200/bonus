@@ -46,28 +46,72 @@ obj={
 		  "IsZeroLimit" : false,
 		  "ZeroType" : 0,
 		  "RightsList" : [
-			
+  
 		  ],
 		  "ListTips" : "无停车券可用",
-		  "NeedMany" : 1,
-		  "DiscountType" : 1,
+		  "NeedMany" : 0,
+		  "DiscountType" : 0,
 		  "IntellegentParams" : "{\"canExceed\":true}",
 		  "RuleName" : "商场停车券",
-		  "ShowType" : 1,
+		  "ShowType" : 2,
 		  "PanelTips" : "每日可使用1张停车券",
 		  "IntellegentType" : 3,
 		  "SelectedMaxCount" : 1,
-		  "Status" : true,
+		  "Status" : false,
 		  "IsShow" : true,
 		  "ZeroParams" : "",
-		  "IsIntellegent" : true,
+		  "IsIntellegent" : false,
 		  "RuleShowType" : 0,
-		  "Checked" : true
+		  "Checked" : false
 		},
 		{
 		  "IsZeroLimit" : true,
 		  "ZeroType" : 0,
 		  "RightsList" : [
+			{
+			  "Amount" : 0,
+			  "OrderRecord" : "4",
+			  "RightsID" : "50",
+			  "IsIntellegent" : false,
+			  "Minutes" : 300,
+			  "AllowanceAmount" : 0,
+			  "RightsName" : "50积分抵扣5小时",
+			  "RightsType" : 1,
+			  "RuleShowType" : 0
+			},
+			{
+			  "Amount" : 0,
+			  "OrderRecord" : "4",
+			  "RightsID" : "40",
+			  "IsIntellegent" : false,
+			  "Minutes" : 240,
+			  "AllowanceAmount" : 0,
+			  "RightsName" : "40积分抵扣4小时",
+			  "RightsType" : 1,
+			  "RuleShowType" : 0
+			},
+			{
+			  "Amount" : 0,
+			  "OrderRecord" : "4",
+			  "RightsID" : "30",
+			  "IsIntellegent" : false,
+			  "Minutes" : 180,
+			  "AllowanceAmount" : 0,
+			  "RightsName" : "30积分抵扣3小时",
+			  "RightsType" : 1,
+			  "RuleShowType" : 0
+			},
+			{
+			  "Amount" : 0,
+			  "OrderRecord" : "4",
+			  "RightsID" : "20",
+			  "IsIntellegent" : false,
+			  "Minutes" : 120,
+			  "AllowanceAmount" : 0,
+			  "RightsName" : "20积分抵扣2小时",
+			  "RightsType" : 1,
+			  "RuleShowType" : 0
+			},
 			{
 			  "Amount" : 0,
 			  "OrderRecord" : "4",
@@ -78,31 +122,9 @@ obj={
 			  "RightsName" : "10积分抵扣1小时",
 			  "RightsType" : 1,
 			  "RuleShowType" : 0
-			},
-			{
-			  "Amount" : 0,
-			  "OrderRecord" : "1",
-			  "RightsID" : "50",
-			  "IsIntellegent" : false,
-			  "Minutes" : 360,
-			  "AllowanceAmount" : 420,
-			  "RightsName" : "50积分抵扣5小时",
-			  "RightsType" : 2,
-			  "RuleShowType" : 0
-			},
-			{
-			  "Amount" : 0,
-			  "OrderRecord" : "2",
-			  "RightsID" : "11",
-			  "IsIntellegent" : false,
-			  "Minutes" : 360,
-			  "AllowanceAmount" : 0,
-			  "RightsName" : "10积分",
-			  "RightsType" : 1,
-			  "RuleShowType" : 0
-			},
+			}
 		  ],
-		  "ListTips" : "请选择，10积分可用",
+		  "ListTips" : "请选择，50积分可用",
 		  "NeedMany" : 0,
 		  "DiscountType" : 0,
 		  "IntellegentParams" : "",
@@ -122,6 +144,7 @@ obj={
 	},
 	"e" : null
   }
+  
   
   
 body = JSON.stringify(obj);
