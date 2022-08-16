@@ -11,7 +11,7 @@
 <key>kind</key>
 <string>software-package</string>
 <key>url</key>
-<string>brovee.myds.me:5000/d/f/webapi/entry.cgi/SYNO.SynologyDrive.Files/HUSAIHO_sign.ipa?api=SYNO.SynologyDrive.Files&method=download&version=1&files=%5B%22id%3A703101433364353024%22%5D&force_download=true</string>
+<string>http://brovee.myds.me:5000/d/f/webapi/entry.cgi/SYNO.SynologyDrive.Files/HUSAIHO_sign.ipa?api=SYNO.SynologyDrive.Files&method=download&version=1&files=%5B%22id%3A703101433364353024%22%5D&force_download=true</string>
 </dict>
 <dict>
 <key>kind</key>
