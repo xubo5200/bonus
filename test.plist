@@ -17,15 +17,15 @@
            <key>metadata</key>
            <dict>
                <key>bundle-identifier</key>
-               <string>（app唯一识别标志，不同会被识别为不同app）</string>
+               <string>me.myds.brovee.lusir</string>
                <key>bundle-version</key>
-               <string>0.0.0.1（替换为版本号）</string>
+               <string>1.2</string>
                <key>kind</key>
                <string>software</string>
                <key>subtitle</key>
-               <string>应用名称</string>
+               <string>lusir</string>
                <key>title</key>
-               <string>应用名称</string>
+               <string>lusir</string>
            </dict>
        </dict>
    </array>
