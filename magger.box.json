@@ -3,7 +3,7 @@
   "name": "Magger 应用订阅",
   "author": "@magger",
   "icon": "https://gitee.com/xubo5200/bonus/raw/boxjs/icon/icon.jpg",
-  "repo": "https://github.com/xubo5200/bonus/blob/master",
+  "repo": "https://gitee.com/xubo5200/bonus/tree/boxjs/",
   "apps": [
     {
       "id": "ql",
