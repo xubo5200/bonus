@@ -1,6 +1,6 @@
 /*
 青龙 docker 每日自动同步 boxjs cookie
-40 * * * https://raw.githubusercontent.com/dompling/Script/master/jd/boxjs_env_to_ql.js
+40 * * * https://gitee.com/xubo5200/bonus/raw/boxjs/scripts/boxjs_env_to_ql.js
  */
 
 const $ = new API("ql", true);
@@ -67,7 +67,7 @@ envsSync.forEach((item) => {
 
 async function getScriptUrl() {
   const response = await $.http.get({
-    url: "https://raw.githubusercontent.com/dompling/Script/master/jd/ql_api.js",
+    url: "https://gitee.com/xubo5200/bonus/raw/boxjs/scripts/ql_api.js",
   });
   return response.body;
 }
@@ -76,8 +76,8 @@ async function getScriptUrl() {
   const qlData = Object.values(envsData);
   if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空");
 
-  const ql_script = (await getScriptUrl()) || "";
-  eval(ql_script);
+//   const ql_script = (await getScriptUrl()) || "";
+//   eval(ql_script);
   await $.ql.initial();
 
   for (let index = 0; index < qlData.length; index++) {

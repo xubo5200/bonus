@@ -2,7 +2,7 @@
   "id": "magger.app.sub",
   "name": "Magger 应用订阅",
   "author": "@magger",
-  "icon": "https://gitee.com/xubo5200/bonus/js/raw/master/icon.jpg",
+  "icon": "https://gitee.com/xubo5200/bonus/raw/boxjs/icon/icon.jpg",
   "repo": "https://github.com/xubo5200/bonus/blob/master",
   "apps": [
     {
@@ -47,7 +47,7 @@
           "childScripts": [
             {
               "name": "同步到青龙",
-              "script": "https://gitee.com/xubo5200/bonus/js/raw/master/boxjs_env_to_ql.js"
+              "script": "https://gitee.com/xubo5200/bonus/raw/boxjs/scripts/boxjs_env_to_ql.js"
             }
           ],
           "child": [
