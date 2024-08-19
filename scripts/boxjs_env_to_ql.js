@@ -67,7 +67,7 @@ envsSync.forEach((item) => {
 
 async function getScriptUrl() {
   const response = await $.http.get({
-    url: "https://gitee.com/xubo5200/bonus/raw/boxjs/scripts/ql_api.js",
+    url: "https://raw.githubusercontent.com/xubo5200/bonus/boxjs/scripts/ql_api.js",
   });
   return response.body;
 }

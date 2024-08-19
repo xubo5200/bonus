@@ -1,0 +1,1 @@
+参照[text](https://github.com/dompling/Script)，修改同步青龙为已用
