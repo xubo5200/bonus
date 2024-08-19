@@ -1,6 +1,6 @@
 /*
 青龙 docker 每日自动同步 boxjs cookie
-40 * * * https://gitee.com/xubo5200/bonus/raw/boxjs/scripts/boxjs_env_to_ql.js
+40 * * * https://raw.githubusercontent.com/xubo5200/bonus/boxjs/scripts/boxjs_env_to_ql.js
  */
 
 const $ = new API("ql", true);
@@ -38,11 +38,12 @@ $.getdata = (t) => {
 
 const title = "🐉 通知提示";
 const notifyMsg = [];
-let qlKey = $.read("ql") || `{}`;
-
+let qlKey = $.getdata("ql") || `{}`;
+let envsSync = []
 try {
+    $.log(qlKey)
     let ENV_KEY = JSON.parse(qlKey).ENV_KEY;
-    if(ENV_KEY){
+    if (ENV_KEY) {
         envsSync = ENV_KEY.split(",")
     }
 
@@ -78,12 +79,15 @@ async function getScriptUrl() {
 
 (async () => {
     const qlData = Object.values(envsData);
-    if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空");
+    // if (!qlData.length) return $.notify(title, "同步失败", "环境变量不能为空");
 
-    //   const ql_script = (await getScriptUrl()) || "";
-    //   eval(ql_script);
+    const ql_script = (await getScriptUrl()) || "";
+    eval(ql_script);
     await $.ql.initial();
 
+    $.log('啥玩意')
+    $.log($.ql_config)
+    $.done()
     for (let index = 0; index < qlData.length; index++) {
         const element = qlData[index];
         const response = await $.ql.select(element.name);
