@@ -1,14 +1,16 @@
 {
-  "id": "brovee.app.sub",
-  "name": "Brovee 应用订阅",
-  "author": "@brovee",
-  "icon": "https://gitee.com/xubo5200/bonus/raw/boxjs/icon/icon.jpg",
-  "repo": "https://gitee.com/xubo5200/bonus/tree/boxjs/",
+  "id": "dompling.app.sub",
+  "name": "DomplingYaYa 应用订阅",
+  "author": "@DomplingYaYa",
+  "icon": "https://avatars3.githubusercontent.com/u/23498579?s=460&u=1e87605e4abc4e6ecf3edd8b1d730227f54db4d4&v=4",
+  "repo": "https://github.com/dompling/Script",
   "apps": [
     {
       "id": "10010Ck",
       "name": "中国联通",
-      "keys": ["@YaYa_10010.cookie"],
+      "keys": [
+        "@YaYa_10010.cookie"
+      ],
       "author": "@dompling",
       "icons": [
         "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/10010.png",
@@ -18,7 +20,9 @@
     {
       "id": "10000Ck",
       "name": "中国电信",
-      "keys": ["@yy_10000.china_telecom_loginUrl"],
+      "keys": [
+        "@yy_10000.china_telecom_loginUrl"
+      ],
       "settings": [
         {
           "id": "@yy_10000.china_telecom_loginUrl",
@@ -141,7 +145,6 @@
         "<ol>Personal access tokens -></ol>",
         "<ol>Generate new token -></ol>",
         "<ol>在里面找到 gist 勾选提交</ol>",
-
         "<h4>Gist Revision Id</h4>",
         "<ol>打开Gist项目</ol>",
         "<ol>默认为Code，选择Revisions</ol>",
@@ -239,7 +242,9 @@
         "https://raw.githubusercontent.com/dompling/Script/master/icon/github-black.jpg",
         "https://raw.githubusercontent.com/dompling/Script/master/icon/github-black.jpg"
       ],
-      "keys": ["@gist.backup_black_apps"],
+      "keys": [
+        "@gist.backup_black_apps"
+      ],
       "settings": [
         {
           "id": "@gist.backup_black_apps",
@@ -280,7 +285,9 @@
         "https://raw.githubusercontent.com/dompling/Script/master/icon/github-white.jpg",
         "https://raw.githubusercontent.com/dompling/Script/master/icon/github-white.jpg"
       ],
-      "keys": ["@gist.backup_white_apps"],
+      "keys": [
+        "@gist.backup_white_apps"
+      ],
       "settings": [
         {
           "id": "@gist.backup_white_apps",
@@ -316,7 +323,9 @@
     {
       "id": "scriptable",
       "name": "桌面组件",
-      "keys": ["scriptable"],
+      "keys": [
+        "scriptable"
+      ],
       "icons": [
         "https://scriptablejs.gitee.io/store/favicon.ico",
         "https://scriptablejs.gitee.io/store/favicon.ico"
@@ -360,7 +369,9 @@
           "type": "textarea",
           "autoGrow": false,
           "placeholder": "boxjs 同步到 Ql 的环境变量",
-          "primary": ["BoxJsKey"],
+          "primary": [
+            "BoxJsKey"
+          ],
           "childScripts": [
             {
               "name": "同步到青龙",
@@ -458,7 +469,11 @@
     {
       "id": "JD_Cookies_remark",
       "name": "登录助手",
-      "keys": ["CookieIndex", "@jd_ck_remark.remark", "@jd_ck_remark.mute"],
+      "keys": [
+        "CookieIndex",
+        "@jd_ck_remark.remark",
+        "@jd_ck_remark.mute"
+      ],
       "descs_html": [
         "若需要方便浏览：右上角菜单->打开调试模式->调试页面地址",
         "<a href='https://raw.githubusercontent.com/dompling/chavyleung-boxjs/boxjs/box/chavy.boxjs.html' target='_blank'>调试页面地址</a>"
@@ -488,7 +503,9 @@
           "autoGrow": false,
           "rows": 4,
           "desc": "快捷跳转 (JSON 格式)",
-          "primary": ["title"],
+          "primary": [
+            "title"
+          ],
           "child": [
             {
               "id": "title",
@@ -525,7 +542,10 @@
           "autoGrow": false,
           "rows": 8,
           "desc": "CK 备注列表 (JSON 格式)",
-          "primary": ["nickname", "status"],
+          "primary": [
+            "nickname",
+            "status"
+          ],
           "child": [
             {
               "id": "index",
@@ -606,7 +626,10 @@
     {
       "id": "JD_Cookies",
       "name": "京东账号",
-      "keys": ["CookiesJD", "cks_get_mute"],
+      "keys": [
+        "CookiesJD",
+        "cks_get_mute"
+      ],
       "descs_html": [
         "若需要方便浏览：右上角菜单->打开调试模式->调试页面地址",
         "<a href='https://raw.githubusercontent.com/dompling/chavyleung-boxjs/boxjs/box/chavy.boxjs.html' target='_blank'>调试页面地址</a>"
@@ -634,7 +657,9 @@
           "autoGrow": false,
           "rows": 8,
           "desc": "CK 列表 (JSON 格式)",
-          "primary": ["userName"],
+          "primary": [
+            "userName"
+          ],
           "child": []
         }
       ],
@@ -658,7 +683,10 @@
     {
       "id": "ftms",
       "name": "丰田汽车",
-      "keys": ["@ftms.headers", "@ftms.mute"],
+      "keys": [
+        "@ftms.headers",
+        "@ftms.mute"
+      ],
       "author": "@dompling",
       "settings": [
         {
@@ -677,7 +705,11 @@
     {
       "id": "SET_TIME",
       "name": "定时任务",
-      "keys": ["@SET_TIME.TASK", "@SET_TIME.SUB", "@SET_TIME.CACHE"],
+      "keys": [
+        "@SET_TIME.TASK",
+        "@SET_TIME.SUB",
+        "@SET_TIME.CACHE"
+      ],
       "author": "@dompling",
       "settings": [
         {
@@ -686,7 +718,9 @@
           "val": "",
           "type": "textarea",
           "desc": "QX 定时任务配置",
-          "primary": ["author"],
+          "primary": [
+            "author"
+          ],
           "autoGrow": false,
           "rows": 8,
           "child": [
