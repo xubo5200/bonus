@@ -2,7 +2,7 @@
   "id": "brovee.app.sub",
   "name": "Brovee 应用订阅",
   "author": "@brovee",
-  "icon": "https://gitee.com/xubo5200/bonus/raw/boxjs/icon/icon.jpg",
+  "icon": "https://raw.githubusercontent.com/xubo5200/bonus/boxjs/icon/icon.jpg",
   "repo": "https://github.com/xubo5200/bonus/tree/boxjs/",
   "apps": [
     {
