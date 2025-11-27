@@ -14,9 +14,9 @@ new Promise(resolve => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: {
-            content: token
-        }
+        body: JSON.stringify({
+        content: token
+    })
     }
     $.post((options), async (err, resp, data) => {
         try {
